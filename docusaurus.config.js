@@ -8,7 +8,7 @@ const config = {
   url: 'https://aryamaanbose.github.io', // Your GitHub Pages URL
   baseUrl: '/BLADE_site/',               // Base URL for your project site
   organizationName: 'aryamaanbose',      // Your GitHub username
-  projectName: 'BLADE_site',             // Your GitHub repository name
+  projectName: 'oncoBLADEweb',             // Your GitHub repository name
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
