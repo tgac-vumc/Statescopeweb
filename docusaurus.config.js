@@ -9,7 +9,7 @@ const config = {
   baseUrl: '/oncoBLADEweb/',               // Base URL for your project site
   organizationName: 'aryamaanbose',      // Your GitHub username
   projectName: 'oncoBLADEweb', 
-  deploymentBranch: 'gh-pages',            // Your GitHub repository name
+  deploymentBranch: 'gh-pages',           // Your GitHub repository name
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
