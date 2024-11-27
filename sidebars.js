@@ -6,45 +6,50 @@ const sidebars = {
   tutorialSidebar: [
     {
       type: 'doc',
-      id: 'installation', // Make sure 'installation' is the correct ID
+      id: 'installation', // Ensure 'installation.md' exists in docs
       label: 'Installation',
     },
     {
       type: 'doc',
-      id: 'overview', // Make sure 'overview' is the correct ID and you have overview.md in your docs
-      label: 'Overview',
+      id: 'input', // Ensure 'input.md' exists in docs
+      label: 'Input Data',
     },
     {
       type: 'category',
-      label: 'Getting Started',
+      label: 'Tutorials',
       items: [
-        'intro', // Make sure 'intro' is the correct ID
         {
-          type: 'category',
-          label: 'Tutorial - Basics',
-          items: [
-             'tutorial-basics/congratulations',
-            'tutorial-basics/create-a-blog-post',
-            'tutorial-basics/create-a-page',
-            'tutorial-basics/deploy-your-site',
-            'tutorial-basics/markdown-features',
-          ],
+          type: 'doc',
+          id: 'intro', // Ensure 'intro.md' exists in docs
+          label: 'Tutorial Intro',
         },
         {
           type: 'category',
-          label: 'Tutorial - Extras',
+          label: 'scRNA Signature',
           items: [
-            'tutorial-extras/manage-docs-versions',
-            'tutorial-extras/translate-your-site',
+            {
+              type: 'doc',
+              id: 'processed-signatures', // Ensure 'processed-signatures.md' exists in docs
+              label: 'Processed Signatures',
+            },
+            {
+              type: 'doc',
+              id: 'create-signatures', // Ensure 'create-signatures.md' exists in docs
+              label: 'Create Signatures',
+            },
           ],
         },
-        
+        {
+          type: 'doc',
+          id: 'deconvolution', // Ensure 'deconvolution.md' exists in docs
+          label: 'Deconvolution',
+        },
       ],
     },
     {
       type: 'doc',
-      id: 'processed-signatures', // Make sure 'overview' is the correct ID and you have overview.md in your docs
-      label: 'Processed Signatures',
+      id: 'troubleshooting', // Ensure 'troubleshooting.md' exists in docs
+      label: 'Troubleshooting',
     },
     // Add additional categories or documents as needed
   ],

@@ -61,11 +61,22 @@ const config = {
         },
         {
           type: 'doc',
-          docId: 'about-us',
+          docId: 'processed-signatures', // Link to the processed signatures page
           position: 'left',
-          label: 'About Us',
+          label: 'Datasets', // Label for the new tab
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
+        {
+          label: 'Articles', // Dropdown menu for articles
+          position: 'left',
+          items: [
+            {
+              type: 'doc',
+              docId: 'PBMC-deconvolution', // Ensure PMBC-deconvolution.md exists in the docs folder
+              label: 'Deconvolution of Lung Cancer Data',
+            },
+            // Add more articles here
+          ],
+        },
         {
           href: 'https://github.com/tgac-vumc/BLADE',
           label: 'GitHub',

@@ -4,13 +4,8 @@ title: Installation Guide
 sidebar_position: 1
 ---
 
-# Installation Guide
 
-Welcome to the BLADE installation guide. This document will walk you through all necessary steps to install and set up BLADE on your system, including system requirements, installation methods, setting up dependencies, and testing the installation.
-
-## System Requirements
-
-### Hardware Requirements
+## Hardware Requirements
 
 BLADE can operate on a variety of systems depending on the data size:
 - **Small-scale data**: Suitable for Binder (1 CPU, 2GB RAM on Google Cloud).
@@ -130,56 +125,3 @@ conda env update -f environment.yml
 
 This command will ensure your `snakemake` environment is updated with any new dependencies added to the `environment.yml` file.
 
-### 3. Using Snakemake Pipelines
-
-Snakemake is a workflow management system that allows you to run complex pipelines. Here’s how to set up and use Snakemake with BLADE.
-
-#### Step 1: Running a Snakemake Workflow
-
-1. **Set up your workflow:** Ensure that you have the necessary files and configurations in place in the repository.
-
-2. **Run the Snakemake pipeline:**
-
-    ```bash
-    snakemake -s your_workflow.smk
-    ```
-
-    Replace `your_workflow.smk` with the specific Snakemake file you are using. This command will execute the pipeline defined in the Snakemake workflow file.
-
-#### Step 2: Specifying Resources
-
-Snakemake allows you to specify resources such as the number of cores:
-
-```bash
-snakemake -s your_workflow.smk --cores 4
-```
-
-Adjust the `--cores` option based on your available resources.
-
-#### Step 3: Running Snakemake in Dry-Run Mode
-
-To see the planned workflow without executing it, use the `--dry-run` option:
-
-```bash
-snakemake -s your_workflow.smk --dry-run
-```
-
-This will list all steps without running them, which is helpful for testing your workflow setup.
-
-#### Step 4: Running on a Specific Node or GPU (Optional)
-
-If you have access to GPU resources or a specific node, you can configure Snakemake to target these resources by adjusting the resource specifications within your workflow file or using additional Snakemake flags, if supported by your cluster.
-
-## Testing the Installation
-
-After completing the installation steps, it is recommended to run a test workflow to ensure that everything is set up correctly. Follow the instructions in the `tests` directory of the repository to execute sample pipelines and verify the installation.
-
-
-## Additional Resources
-
-- [BLADE Documentation](https://github.com/aryamaanbose/BLADE_tasks/wiki)
-- [Conda Documentation](https://docs.conda.io/)
-- [Snakemake Documentation](https://snakemake.readthedocs.io/)
-
----
-```
