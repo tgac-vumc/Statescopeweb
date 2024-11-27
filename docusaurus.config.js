@@ -6,7 +6,7 @@ const config = {
   tagline: 'Bayesian Log Normal Deconvolution',
   favicon: 'img/favicon.ico',
   url: 'https://aryamaanbose.github.io', // Your GitHub Pages URL
-  baseUrl: '/oncoBLADEweb/',               // Base URL for your project site
+  baseUrl: '/',               // Base URL for your project site
   organizationName: 'aryamaanbose',      // Your GitHub username
   projectName: 'oncoBLADEweb', 
   deploymentBranch: 'gh-pages',           // Your GitHub repository name
