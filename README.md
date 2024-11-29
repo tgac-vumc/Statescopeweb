@@ -1,6 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/88bbecd4-a11c-4126-8939-ec186acae5a6/deploy-status)](https://app.netlify.com/sites/animated-gelato-fa7a1e/deploys)
-
-
+---
 
 # **BLADE Website**
 
@@ -10,19 +8,42 @@ Welcome to the **BLADE** website repository! This repository powers the official
 
 ---
 
-## **Overview**
+## **Directory Structure**
 
-The **BLADE Website** is built with [Docusaurus 2](https://docusaurus.io/), a modern static site generator. The website serves as a comprehensive platform for installation guides, tutorials, datasets, and related articles. Contributions are welcome to enhance and expand its content.
+```plaintext
+oncoBLADE/
+├── docs/                   # Markdown files for the website content
+├── src/                    # Custom React components and styles
+├── static/                 # Static assets (images, etc.)
+├── sidebars.js             # Sidebar configuration
+├── docusaurus.config.js    # Main configuration file
+├── package.json            # Node.js dependencies
+└── README.md               # This file
+```
+
+### **Key Locations for Editing**
+
+- **Sidebar**: Modify `sidebars.js` to change the sidebar structure or add new pages.
+- **Navbar**: Update `docusaurus.config.js` in the `themeConfig` section to add or edit navbar items.
+- **Pages**: Add or edit Markdown files in the `docs/` directory to create or modify website content.
 
 ---
 
-## **Features**
+## **Locating and Editing Document Files**
 
-- **Interactive Tutorials**: Step-by-step guides to use BLADE effectively.
-- **Dynamic Sidebar and Navbar**: Customize the navigation structure with ease.
-- **Live Preview**: Changes pushed to the repository are reflected on the website in real time via Netlify.
-- **Multi-language Support**: Available in English and Dutch (`i18n` feature).
-- **Code Highlighting**: Syntax highlighting for Python, R, Bash, and more using Prism.
+The content of the website is stored as Markdown files in the `docs/` directory. Each document corresponds to a specific page on the website. For example:
+
+- If you want to edit the **Installation Guide**, locate the file `installation.md` in the `docs/` directory:
+
+  ```plaintext
+  oncoBLADE/
+  ├── docs/
+      ├── installation.md
+  ```
+
+- Open `installation.md` in your preferred text editor, make your changes, and save the file.
+
+After editing, follow the contribution steps to commit and push your changes.
 
 ---
 
@@ -67,11 +88,9 @@ The generated static files will be in the `build` directory.
 
 ## **Tutorial: Adding or Editing Pages**
 
-You can customize the website by adding or editing pages in the **Docusaurus** structure. Here’s how:
-
 ### **1. Editing the Sidebar**
 
-The sidebar is controlled by the `sidebars.js` file. To add a new document to the sidebar:
+The sidebar is controlled by the `sidebars.js` file. To add a new document:
 
 - Open `sidebars.js` and locate the appropriate section.
 - Add the new document's ID. For example:
@@ -103,7 +122,7 @@ The top navigation bar is managed in `docusaurus.config.js`. To add a new item:
 
 ### **3. Creating or Editing Markdown Files**
 
-Pages in Docusaurus are written in Markdown. You can add code blocks, links, and more using standard Markdown syntax:
+Pages in Docusaurus are written in Markdown. Add new content by creating `.md` files in the `docs/` directory. Use the following elements in Markdown:
 
 #### Code Blocks
 To add code snippets, use triple backticks (\`\`\`):
@@ -122,8 +141,6 @@ To link to another page in the docs:
 ```markdown
 [Go to Installation Guide](./installation.md)
 ```
-
-Place the Markdown files in the `docs` directory.
 
 ---
 
@@ -149,21 +166,6 @@ git push origin branch-name
 ```
 
 Once pushed, changes will be reflected on the deployed site if you have permissions.
-
----
-
-## **Project Structure**
-
-```plaintext
-oncoBLADE/
-├── docs/                   # Markdown files for the website content
-├── src/                    # Custom React components and styles
-├── static/                 # Static assets (images, etc.)
-├── sidebars.js             # Sidebar configuration
-├── docusaurus.config.js    # Main configuration file
-├── package.json            # Node.js dependencies
-└── README.md               # This file
-```
 
 ---
 
