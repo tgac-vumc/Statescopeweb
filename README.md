@@ -6,6 +6,7 @@ Welcome to the **BLADE** website repository! This repository powers the official
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/51d4c924-c90c-4ac8-8716-6ad9def48bb2/deploy-status)](https://app.netlify.com/sites/statescope/deploys)
 
+[**Visit BLADE Website**](https://statescope.netlify.app/)
 ---
 
 ## **Directory Structure**
