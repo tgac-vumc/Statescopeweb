@@ -25,11 +25,11 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/aryamaanbose/BLADE_site/edit/main/BLADE/', // Link to edit docs in GitHub
+          editUrl: 'https://github.com/tgac-vumc/OncoBLADEweb.git', // Link to edit docs in GitHub
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/aryamaanbose/BLADE_site/edit/main/BLADE/', // Link to edit blog posts in GitHub
+          editUrl: 'https://github.com/tgac-vumc/OncoBLADEweb.git', // Link to edit blog posts in GitHub
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

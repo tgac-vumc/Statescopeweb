@@ -22,7 +22,7 @@ This tutorial explains how to use **BLADE** for NSCLC data deconvolution. It cov
 Clone the **BLADE** repository to your HPC server:
 
 ```bash
-git clone https://github.com/aryamaanbose/BLADE.git
+git clone https://github.com/
 cd BLADE
 ```
 

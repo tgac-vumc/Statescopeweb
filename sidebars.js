@@ -19,30 +19,41 @@ const sidebars = {
       label: 'Tutorials',
       items: [
         {
-          type: 'doc',
-          id: 'intro', // Ensure 'intro.md' exists in docs
-          label: 'Tutorial Intro',
-        },
-        {
           type: 'category',
-          label: 'scRNA Signature',
+          label: 'Tutorials Simple',
           items: [
             {
               type: 'doc',
-              id: 'processed-signatures', // Ensure 'processed-signatures.md' exists in docs
-              label: 'Processed Signatures',
+              id: 'python', // Ensure 'python.md' exists in docs
+              label: 'Python',
             },
+            {
+              type: 'doc',
+              id: 'r', // Ensure 'r.md' exists in docs
+              label: 'R',
+            },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Tutorials Advanced Users ',
+          items: [
             {
               type: 'doc',
               id: 'create-signatures', // Ensure 'create-signatures.md' exists in docs
               label: 'Create Signatures',
             },
+            {
+              type: 'doc',
+              id: 'deconvolution', // Ensure 'run-deconvolution.md' exists in docs
+              label: 'Run Deconvolution',
+            },
+            {
+              type: 'doc',
+              id: 'purification', // Ensure 'run-purification.md' exists in docs
+              label: 'Run Purification',
+            },
           ],
-        },
-        {
-          type: 'doc',
-          id: 'deconvolution', // Ensure 'deconvolution.md' exists in docs
-          label: 'Deconvolution',
         },
       ],
     },

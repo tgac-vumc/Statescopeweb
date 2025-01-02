@@ -6,22 +6,19 @@ sidebar_label: Create Signatures
 
 # Create Signatures from Single-cell RNA-seq Data
 
-This page guides you through the process of creating signature matrices (`X` and `stdX`) from your own single-cell RNA-seq data. Additionally, instructions for using a **Snakemake pipeline** and scheduling it with **SLURM** are provided.
+This page guides you through the process of creating signature matrices (`X` and `stdX`) from your own single-cell RNA-seq data. Additionally, instructions for using a **Snakemake pipeline** and optionally scheduling it with **SLURM** on the HPC are provided.
 
 ---
 
 ## Accepted Input Formats
 
-- **Seurat Objects**
-  - Format: `.rds` files containing Seurat objects.
-  - Version: Compatible with Seurat v3 and above.
+- **Anndata**
+  - Add some information about the file types
 
-- **SingleCellExperiment Objects**
-  - Format: `.rds` files containing SingleCellExperiment objects.
-
-- **Counts Matrices with Metadata**
-  - Counts matrix in CSV or TSV format.
-  - Metadata file containing cell annotations.
+- **Have data in some other format ?**
+  - Convert it using our script
+    - .rds files 
+    - counts data and metadata separately (.mtx, .csv....)
 
 ---
 
@@ -30,13 +27,14 @@ This page guides you through the process of creating signature matrices (`X` and
 ### **1. Preprocess Your scRNA-seq Data**
 
 - **Quality Control**: Filter out low-quality cells and genes.
-- **Normalization**: Normalize the data to account for sequencing depth.
-- **Feature Selection**: Identify highly variable genes if necessary.
+- 
 
 ### **2. Annotate Cell Types**
 
 - Assign cell type labels to each cell in your dataset.
 - Ensure that the metadata includes a column for cell type annotations (e.g., `cell_type_major`).
+  - For adata objects should be a column in adata.obs
+  - For .rds and metadata should have an appropriate column with the cell type annotations for the cells 
 
 ### **3. Calculate Average Expression Profiles**
 
