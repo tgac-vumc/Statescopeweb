@@ -41,7 +41,7 @@ const config = {
   themeConfig: {
     image: 'img/logo_final_small.png', // Image used for social media previews
     navbar: {
-      title: 'BLADE v1.0.0',
+      title: 'Statescope v1.0.0',
       logo: {
         alt: 'BLADE Logo',
         src: 'img/logo_final_small.png',

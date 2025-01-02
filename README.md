@@ -2,10 +2,11 @@
 
 # **BLADE Website**
 
-Welcome to the **BLADE** website repository! This repository powers the official documentation and tutorials for **BLADE** (Bayesian Log-Normal Deconvolution), hosted on [Netlify](https://app.netlify.com/sites/animated-gelato-fa7a1e/deploys).
+Welcome to the **BLADE** website repository! This repository powers the official documentation and tutorials for **BLADE** (Bayesian Log-Normal Deconvolution), hosted on [Netlify](https://app.netlify.com/sites/statescope/deploys).
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/88bbecd4-a11c-4126-8939-ec186acae5a6/deploy-status)](https://app.netlify.com/sites/animated-gelato-fa7a1e/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/51d4c924-c90c-4ac8-8716-6ad9def48bb2/deploy-status)](https://app.netlify.com/sites/statescope/deploys)
 
+[**Visit BLADE Website**](https://statescope.netlify.app/)
 ---
 
 ## **Directory Structure**
@@ -173,7 +174,7 @@ Once pushed, changes will be reflected on the deployed site if you have permissi
 
 The website is deployed on [Netlify](https://www.netlify.com/). Every push to the `main` branch triggers a redeployment. The live site can be accessed at:
 
-[**Visit BLADE Website**](https://app.netlify.com/sites/animated-gelato-fa7a1e/deploys)
+[**Visit BLADE Website**](https://statescope.netlify.app/)
 
 ---
 
