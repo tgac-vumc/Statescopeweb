@@ -32,18 +32,12 @@ function CustomNavbar(props) {
     };
   }, []);
 
-  // Manually define available locales and their paths
-  const locales = [
-    { code: 'en', label: 'English', url: '/' },
-    { code: 'nl', label: 'Dutch', url: '/nl/' }, // Replace with your actual Dutch locale path
-  ];
-
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       {/* Original Navbar */}
       <Navbar {...props} />
 
-      {/* Right Side: Search Button, Dark Mode Toggle, Fullscreen Toggle, Language Dropdown */}
+      {/* Right Side: Search Button, Dark Mode Toggle, Fullscreen Toggle */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: 'auto', paddingRight: '1rem' }}>
         {/* Search Button */}
         <SearchButton />
@@ -77,33 +71,6 @@ function CustomNavbar(props) {
         >
           {isFullscreen ? <MdFullscreenExit /> : <MdFullscreen />}
         </button>
-
-        {/* Language Dropdown */}
-        <div className="language-dropdown" style={{ position: 'relative' }}>
-          <select
-            onChange={(e) => {
-              const selectedLocale = locales.find((locale) => locale.code === e.target.value);
-              if (selectedLocale) {
-                window.location.href = selectedLocale.url;
-              }
-            }}
-            style={{
-              padding: '6px 12px',
-              fontSize: '1rem',
-              border: '1px solid var(--ifm-color-primary)',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              backgroundColor: 'var(--ifm-navbar-background-color)',
-              color: 'var(--ifm-font-color-base)',
-            }}
-          >
-            {locales.map((locale) => (
-              <option key={locale.code} value={locale.code}>
-                {locale.label}
-              </option>
-            ))}
-          </select>
-        </div>
       </div>
     </div>
   );
