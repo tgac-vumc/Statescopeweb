@@ -1,0 +1,21 @@
+.footer {
+    background-color: #111;     /* Dark background */
+    border-top: 1px solid #444; /* Subtle top border */
+    padding: 0.5rem;            /* Slimmer footer */
+    color: #fff;
+    font-size: 0.875rem;        /* Slightly smaller text */
+  }
+  
+  /* Container for the left and right items */
+  .footerRow {
+    display: flex;
+    justify-content: space-between; /* Put items at extreme corners */
+    align-items: center;            /* Vertically center them if they differ in height */
+  }
+  
+  /* Optional styling for each span */
+  .footerLeft, .footerRight {
+    margin: 0;
+    /* Add any additional styling here, e.g. font-weight, etc. */
+  }
+  

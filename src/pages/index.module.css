@@ -1,33 +1,107 @@
-/* src/pages/index.module.css */
-.heroBanner {
-  text-align: center;
-  margin-bottom: 2rem;
+.mainContainer {
+  position: relative;
+  padding: 40px 20px;
+  background-image: url('/img/background.jpg'); /* Double-check this path */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh; /* Ensures the container is at least the height of the viewport */
+  width: 100%; /* Ensures the container spans the width of the viewport */
+  background-repeat: no-repeat; /* Prevents the background from repeating */
 }
 
-.title {
-  font-size: 2.5rem;
-  font-weight: bold;
+.mainContainer::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  z-index: 1; /* This should be lower than content but above the background */
 }
 
-.tagline {
-  font-size: 1.25rem;
-  color: #666;
+/* Ensuring all child elements have transparent backgrounds */
+.mainContainer > *, .mainContainer > * > *, .container, .imageContainer {
+  background: transparent !important; /* Forces transparency */
+  position: relative;
+  z-index: 2; /* Ensures these are above the ::before element */
 }
 
-.descriptionSection {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 1.5rem 0;
+
+.logoContainer {
+  background: transparent !important;
+  text-align: center !important;
+  margin-bottom: 20px !important;
+}
+
+.logoImage {
+  background: transparent !important;
+  max-width: 30% !important;
+  height: auto !important;
+}
+
+.buttonContainer {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 20px !important;
+  margin-top: 20px !important;
+  margin-bottom: 40px !important;
 }
 
 .imageContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
+  text-align: center !important;
 }
 
 .responsiveImage {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+  max-width: 90% !important;
+  height: auto !important;
+}
+
+.badge {
+  position: absolute !important;
+  top: 40px !important;
+  right: 35px !important;
+  background-color: #f3f3f1 !important;
+  color: #000000 !important;
+  padding: 10px 20px !important;
+  border: 2px solid #000000 !important;
+  border-radius: 20px !important;
+  font-size: 0.8rem !important;
+  font-weight: bold !important;
+  z-index: 1000 !important;
+}
+
+.badge::before {
+  font-family: 'FontAwesome' !important;
+  margin-right: 10px !important;
+  font-size: 20px !important;
+}
+
+.badge span {
+  margin-left: 5px !important;
+}
+
+.badge:hover {
+  background-color: #ffa09f !important;
+  border-color: #000000 !important;
+}
+
+.button {
+  padding: 10px 20px !important;
+  font-size: 1.3rem !important;
+  text-decoration: none !important;
+  color: rgb(86, 86, 86) !important;
+  border: 2px solid grey !important;
+  border-radius: 5px !important;
+  transition: background-color 0.3s ease, color 0.3s ease !important;
+}
+
+.button:hover {
+  background-color: #ffffff !important;
+  color: #0370c9 !important;
+  border-color: #000000 !important;
+}
+
+.downloadButton, .githubButton {
+  background-color: #ffffff !important;
+  color: rgb(0, 0, 0) !important;
 }

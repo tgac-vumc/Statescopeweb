@@ -2,7 +2,7 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 
 const config = {
-  title: 'BLADE ',
+  title: 'Statescope',
   tagline: 'Bayesian Log Normal Deconvolution',
   favicon: 'img/favicon.ico',
   url: 'https://aryamaanbose.github.io', // Your GitHub Pages URL
@@ -37,10 +37,7 @@ const config = {
     image: 'img/logo_final_small.png', // Image used for social media previews
     navbar: {
       title: 'Statescope v1.0.0',
-      logo: {
-        alt: 'BLADE Logo',
-        src: 'img/logo_final_small.png',
-      },
+    
       items: [
         {
           type: 'doc',
