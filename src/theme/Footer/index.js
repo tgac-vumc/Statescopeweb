@@ -10,9 +10,16 @@ export default function Footer() {
           Tumour Genome Analysis Core, Amsterdam UMC
         </span>
 
-        {/* Right side text */}
+        {/* Right side text with a link */}
         <span className={styles.footerRight}>
-          Site built with Docusaurus 2.4.0
+          Site built with{' '}
+          <a
+            href="https://docusaurus.io"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Docusaurus 3.6.1
+          </a>
         </span>
       </div>
     </footer>

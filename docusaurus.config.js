@@ -47,12 +47,6 @@ const config = {
         },
         {
           type: 'doc',
-          docId: 'intro',
-          position: 'left',
-          label: 'Tutorial',
-        },
-        {
-          type: 'doc',
           docId: 'processed-signatures', // Link to the processed signatures page
           position: 'left',
           label: 'Datasets', // Label for the new tab

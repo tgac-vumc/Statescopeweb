@@ -101,7 +101,20 @@
   border-color: #000000 !important;
 }
 
-.downloadButton, .githubButton {
+
+
+.backButton {
+  font-size: 1.2rem !important;  /* Smaller text size */
+  padding: 5px 10px !important;  /* Less padding for a smaller button */
+}
+
+
+.downloadButton,
+.githubButton,
+.backButton {
+  /* Common styling for all three buttons */
   background-color: #ffffff !important;
   color: rgb(0, 0, 0) !important;
 }
+
+
