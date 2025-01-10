@@ -5,11 +5,11 @@ const config = {
   title: 'Statescope',
   tagline: 'Bayesian Log Normal Deconvolution',
   favicon: 'img/favicon.ico',
-  url: 'https://aryamaanbose.github.io', // Your GitHub Pages URL
-  baseUrl: '/',               // Base URL for your project site
-  organizationName: 'aryamaanbose',      // Your GitHub username
-  projectName: 'oncoBLADEweb', 
-  deploymentBranch: 'gh-pages',           // Your GitHub repository name
+  url: 'https://tgac-vumc.github.io', // URL for your GitHub Pages
+  baseUrl: '/Statescopeweb/',         // Base directory for your project
+  organizationName: 'tgac-vumc',      // Your GitHub organization
+  projectName: 'Statescopeweb',       // Your GitHub repository name
+  deploymentBranch: 'gh-pages',       // Deployment branch
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
