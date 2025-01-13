@@ -5,7 +5,7 @@ const config = {
   title: 'Statescope',
   tagline: 'Bayesian Log Normal Deconvolution',
   favicon: 'img/favicon.ico',
-  url: 'https://tgac-vumc.github.io', // URL for your GitHub Pages
+  url: 'https://tgac-vumc.github.io/Statescopeweb/', // URL for your GitHub Pages
   baseUrl: '/Statescopeweb/',         // Base directory for your project
   organizationName: 'tgac-vumc',      // Your GitHub organization
   projectName: 'Statescopeweb',       // Your GitHub repository name
