@@ -6,7 +6,7 @@ const config = {
   tagline: 'Bayesian Log Normal Deconvolution',
   favicon: 'img/favicon.ico',
   url: 'https://tgac-vumc.github.io', // Your website URL
-  baseUrl: '/',
+  baseUrl: '/Statescopeweb/',
   organizationName: 'tgac-vumc',
   projectName: 'Statescopeweb',
   deploymentBranch: 'gh-pages',
