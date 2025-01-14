@@ -9,7 +9,7 @@ const config = {
   baseUrl: '/',
   organizationName: 'tgac-vumc',
   projectName: 'Statescopeweb',
-  deploymentBranch: 'main',
+  deploymentBranch: 'gh-pages',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   trailingSlash: false,
