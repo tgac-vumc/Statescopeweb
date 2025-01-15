@@ -12,14 +12,13 @@ export default function Home() {
         
         {/* NEW BUTTON (TOP LEFT) */}
         <div className={styles.topLeftContainer}>
-        <a
-  href="/docs/PBMC-deconvolution"
-  className={`${styles.button} ${styles.backButton}`}
->
-  Example analysis with Statescope&nbsp;
-  <FontAwesomeIcon icon={faArrowRight} />
-</a>
-
+          <a
+            href="/Statescopeweb/docs/PBMC-deconvolution"
+            className={`${styles.button} ${styles.backButton}`}
+          >
+            Example analysis with Statescope&nbsp;
+            <FontAwesomeIcon icon={faArrowRight} />
+          </a>
         </div>
 
         <div className={styles.badge}>Under Development</div>
@@ -27,14 +26,14 @@ export default function Home() {
         <div className="container">
           <div className={styles.logoContainer}>
             <img
-              src="/img/Logo_statescope.png"
+              src="/Statescopeweb/img/Logo_statescope.png"
               alt="Statescope Logo"
               className={styles.logoImage}
             />
           </div>
           <div className={styles.buttonContainer}>
             <a
-              href="/docs/installation"
+              href="/Statescopeweb/docs/installation"
               className={`${styles.button} ${styles.downloadButton}`}
             >
               <FontAwesomeIcon icon={faDownload} /> Download
@@ -51,7 +50,7 @@ export default function Home() {
 
           <div className={styles.imageContainer}>
             <img
-              src="/img/Statescope_overview.png"
+              src="/Statescopeweb/img/Statescope_overview.png"
               alt="Statescope Overview"
               className={styles.responsiveImage}
             />
