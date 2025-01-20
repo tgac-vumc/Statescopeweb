@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './index.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +14,7 @@ export default function Home() {
         {/* NEW BUTTON (TOP LEFT) */}
         <div className={styles.topLeftContainer}>
           <a
-            href="/Statescopeweb/docs/PBMC-deconvolution"
+            href={useBaseUrl('docs/PBMC-deconvolution')}
             className={`${styles.button} ${styles.backButton}`}
           >
             Example analysis with Statescope&nbsp;
@@ -26,14 +27,14 @@ export default function Home() {
         <div className="container">
           <div className={styles.logoContainer}>
             <img
-              src="/Statescopeweb/img/Logo_statescope.png"
+              src={useBaseUrl('img/Logo_statescope.png')}
               alt="Statescope Logo"
               className={styles.logoImage}
             />
           </div>
           <div className={styles.buttonContainer}>
             <a
-              href="/Statescopeweb/docs/installation"
+              href={useBaseUrl('docs/installation')}
               className={`${styles.button} ${styles.downloadButton}`}
             >
               <FontAwesomeIcon icon={faDownload} /> Download
@@ -50,7 +51,7 @@ export default function Home() {
 
           <div className={styles.imageContainer}>
             <img
-              src="/Statescopeweb/img/Statescope_overview.png"
+              src={useBaseUrl('img/Statescope_overview.png')}
               alt="Statescope Overview"
               className={styles.responsiveImage}
             />
