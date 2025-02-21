@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
+
 export default function Home() {
   return (
     <Layout title="Statescope" description="Bayesian Log Normal Deconvolution">
@@ -27,7 +28,7 @@ export default function Home() {
         <div className="container">
           <div className={styles.logoContainer}>
             <img
-              src={useBaseUrl('img/Logo_statescope.png')}
+              src={useBaseUrl('img/Logo_Statescope.png')}
               alt="Statescope Logo"
               className={styles.logoImage}
             />
@@ -51,7 +52,7 @@ export default function Home() {
 
           <div className={styles.imageContainer}>
             <img
-              src={useBaseUrl('img/Statescope_overview.png')}
+              src={useBaseUrl('img/Statescope_Overview.png')}
               alt="Statescope Overview"
               className={styles.responsiveImage}
             />

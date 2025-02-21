@@ -1,20 +1,53 @@
+/* Base styles for the footer */
 .footer {
-    background-color: #111;     /* Dark background */
-    border-top: 1px solid #444; /* Subtle top border */
-    padding: 0.5rem;            /* Slimmer footer */
-    color: red ;                 /* <-- Changed to red */
-    font-size: 0.875rem;        /* Slightly smaller text */
-  }
-  
-  
-  /* Container for the left and right items */
+  background-color: var(--ifm-background-color); /* Use the theme background color */
+  border-top: 1px solid #000 !important; /* Black top border */
+  padding: 1rem; /* Ample padding for better spacing */
+  color: var(--ifm-font-color-base); /* Use the theme's base font color */
+  font-size: 0.875rem; /* Appropriately sized text for footer */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions for theme changes */
+}
+
+/* Container for layout */
+.footerRow {
+  display: flex;
+  justify-content: space-between; /* Space items out between the sides */
+  align-items: center; /* Align items vertically in the middle */
+  padding: 0 20px; /* Horizontal padding for better alignment */
+}
+
+.footerLeft, .footerRight {
+  color: inherit; /* Inherit color from the footer for consistency */
+}
+
+/* Dark mode specific styles */
+[data-theme='dark'] .footer {
+  background-color: #1a1a1a; /* Darker background for dark mode */
+  color: #ccc; /* Lighter text color for readability in dark mode */
+  border-top-color: rgba(255, 255, 255, 0.2); /* Lighter border in dark mode */
+}
+
+/* Styling for links in the footer for better visibility and interaction */
+.footer a {
+  color: var(--ifm-color-primary); /* Primary color for links */
+  text-decoration: none; /* No underline */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.footer a:hover {
+  color: var(--ifm-color-primary-dark); /* Darker shade when hovered */
+  text-decoration: underline; /* Underline on hover for better interaction feedback */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
   .footerRow {
-    display: flex;
-    justify-content: space-between; /* Put items at extreme corners */
-    align-items: center;            /* Vertically center them if they differ in height */
+      flex-direction: column; /* Stack vertically on small screens */
+      align-items: flex-start; /* Align to start */
   }
-  
+
   .footerLeft, .footerRight {
-    color: rgb(0, 62, 128);  /* Text color */
+      margin-bottom: 0.5rem; /* Add some margin bottom for spacing */
+      width: 100%; /* Full width to use all available space */
   }
-  
+}
