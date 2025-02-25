@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkStatescope=self.webpackChunkStatescope||[]).push([[1903],{1912:e=>{e.exports=JSON.parse('{"blogBasePath":"/Statescope/blog","blogTitle":"Blog","authorsListPath":"/Statescope/blog/authors"}')}}]);
