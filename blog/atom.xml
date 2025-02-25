@@ -6,7 +6,7 @@
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tgac-vumc.github.io/Statescopeweb/blog"/>
     <subtitle>Statescope Blog</subtitle>
-    <icon>https://tgac-vumc.github.io/Statescopeweb/img/favicon.ico</icon>
+    <icon>https://tgac-vumc.github.io/Statescopeweb/img/logo_final_small.png</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
         <id>https://tgac-vumc.github.io/Statescopeweb/blog/welcome</id>

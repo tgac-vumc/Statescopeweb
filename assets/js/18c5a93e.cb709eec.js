@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkStatescope=self.webpackChunkStatescope||[]).push([[6730],{298:(e,c,s)=>{s.r(c),s.d(c,{default:()=>n});s(6540);var t=s(4848);const n=function(){return(0,t.jsx)("div",{children:(0,t.jsx)("h1",{children:"Search"})})}}}]);
