@@ -1,4 +1,4 @@
----
+
 
 # **Statescope Website**
 
@@ -6,7 +6,7 @@ Welcome to the **Statescope** website repository! This repository powers the off
 
 **Live Website:** [https://tgac-vumc.github.io/Statescopeweb/](https://tgac-vumc.github.io/Statescopeweb/)
 
----
+
 
 ## **Directory Structure**
 
@@ -27,7 +27,7 @@ Statescopeweb/
 * **Navbar:** Update `docusaurus.config.js` in the `themeConfig` section to add or edit navbar items.
 * **Pages:** Add or edit Markdown files in the `docs/` directory to create or modify website content.
 
----
+
 
 ## **Locating and Editing Document Files**
 
@@ -46,7 +46,6 @@ Each file corresponds to a specific page.
 
 Open the Markdown file in your editor, make changes, and save.
 
----
 
 ## **Getting Started**
 
@@ -88,7 +87,6 @@ npm run build
 
 Static files will be in the `build/` directory.
 
----
 
 ## **Tutorial: Adding or Editing Pages**
 
@@ -141,7 +139,7 @@ def hello_world():
 [Go to Installation Guide](./installation.md)
 ```
 
----
+
 
 ## **How to Contribute**
 
@@ -166,7 +164,6 @@ def hello_world():
 
    > Changes merged into `main` will update the live website automatically via GitHub Pages.
 
----
 
 ## **Hosting**
 
@@ -175,7 +172,7 @@ Every push to the `main` branch triggers an update.
 
 **Live Site:** [https://tgac-vumc.github.io/Statescopeweb/](https://tgac-vumc.github.io/Statescopeweb/)
 
----
+
 
 ## **Contact**
 
@@ -184,4 +181,3 @@ For questions, suggestions, or contributions, please contact:
 * **Repository Maintainer:** [Aryamaan Bose](https://github.com/aryamaanbose)
 * **GitHub Organization:** [TGAC](https://github.com/tgac-vumc)
 
----
