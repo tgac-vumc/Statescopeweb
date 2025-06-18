@@ -179,6 +179,6 @@ Every push to the `main` branch triggers an update.
 
 For questions, suggestions, or contributions, please contact:
 
-* [Yongsoo Kim](yo.kim@amsterdamumc.nl),[Aryamaan Bose](a.bose1@amsterdamumc.nl)
+* Yongsoo Kim: yo.kim@amsterdamumc.nl, Aryamaan Bose: a.bose1@amsterdamumc.nl
 * **GitHub Organization:** [TGAC](https://github.com/tgac-vumc)
 ---
