@@ -61,7 +61,7 @@ html[data-theme='dark'] .logoImage {
   padding: 1vw 2vw !important;
   font-size: clamp(0.8rem, 2vw, 1.3rem) !important;
   text-decoration: none !important;
-  color: rgb(86, 86, 86) !important;
+  color: rgb(1, 1, 1) !important;
   border: 0.2vw solid grey !important;
   border-radius: 0.5vw !important;
   transition: background-color 0.3s ease, color 0.3s ease !important;
@@ -100,7 +100,7 @@ html[data-theme='dark'] .button:hover,
 html[data-theme='dark'] .downloadButton:hover,
 html[data-theme='dark'] .githubButton:hover,
 html[data-theme='dark'] .backButton:hover {
-  background-color: #2a2a2a !important;
+  background-color: #191919 !important;
   color: #ffeb3b !important;
   border-color: #000000 !important;
 }

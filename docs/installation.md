@@ -4,7 +4,7 @@ title: Installation Guide
 sidebar_position: 1
 ---
 
-## 🖥️ Hardware Requirements
+## Hardware Requirements
 
 Statescope can operate on a variety of systems depending on the data size:
 
@@ -25,7 +25,7 @@ Statescope is primarily tested on Linux-based operating systems. We recommend:
 > **Note**: While BLADE might work on other OS platforms (macOS, Windows with WSL), these setups may require additional configurations.
 
 
-## ⬇️ Installation Tutorials
+## Installation Tutorials
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -92,7 +92,7 @@ git clone https://github.com/tgac-vumc/Statescope.git
 </TabItem>
 </Tabs>
 
-## 📽️ Running a Demo Script
+## Running a Demo Script
 
 You can find a basic demo script under the [Tutorial](../docs/python.md). You can open the script using the command below after installing **Statescope**:
 
@@ -100,7 +100,7 @@ You can find a basic demo script under the [Tutorial](../docs/python.md). You ca
 jupyter notebook tutorial/BasicTutorial.ipynb
 ```
 
-## 🛠️Additional Information
+## Additional Information
 
 #### Installing Conda
 
