@@ -1,18 +1,15 @@
----
+# **Statescope Website**
 
-# **BLADE Website**
+Welcome to the **Statescope** website repository! This repository powers the official documentation and tutorials for **Statescope**, a tool for Bayesian Log-Normal Deconvolution and related multi-omics analyses.
 
-Welcome to the **BLADE** website repository! This repository powers the official documentation and tutorials for **BLADE** (Bayesian Log-Normal Deconvolution), hosted on [Netlify](https://app.netlify.com/sites/statescope/deploys).
+**Live Website:** [https://tgac-vumc.github.io/Statescopeweb/](https://tgac-vumc.github.io/Statescopeweb/)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/51d4c924-c90c-4ac8-8716-6ad9def48bb2/deploy-status)](https://app.netlify.com/sites/statescope/deploys)
-
-[**Visit BLADE Website**](https://statescope.netlify.app/)
 ---
 
 ## **Directory Structure**
 
 ```plaintext
-oncoBLADE/
+Statescopeweb/
 ├── docs/                   # Markdown files for the website content
 ├── src/                    # Custom React components and styles
 ├── static/                 # Static assets (images, etc.)
@@ -24,27 +21,28 @@ oncoBLADE/
 
 ### **Key Locations for Editing**
 
-- **Sidebar**: Modify `sidebars.js` to change the sidebar structure or add new pages.
-- **Navbar**: Update `docusaurus.config.js` in the `themeConfig` section to add or edit navbar items.
-- **Pages**: Add or edit Markdown files in the `docs/` directory to create or modify website content.
+* **Sidebar:** Modify `sidebars.js` to change the sidebar structure or add new pages.
+* **Navbar:** Update `docusaurus.config.js` in the `themeConfig` section to add or edit navbar items.
+* **Pages:** Add or edit Markdown files in the `docs/` directory to create or modify website content.
 
 ---
 
 ## **Locating and Editing Document Files**
 
-The content of the website is stored as Markdown files in the `docs/` directory. Each document corresponds to a specific page on the website. For example:
+The main website content is stored as Markdown files in the `docs/` directory.
+Each file corresponds to a specific page.
 
-- If you want to edit the **Installation Guide**, locate the file `installation.md` in the `docs/` directory:
+**For example:**
+
+* To edit the **Installation Guide**, locate `installation.md` in `docs/`:
 
   ```plaintext
-  oncoBLADE/
+  Statescopeweb/
   ├── docs/
       ├── installation.md
   ```
 
-- Open `installation.md` in your preferred text editor, make your changes, and save the file.
-
-After editing, follow the contribution steps to commit and push your changes.
+Open the Markdown file in your editor, make changes, and save.
 
 ---
 
@@ -53,37 +51,40 @@ After editing, follow the contribution steps to commit and push your changes.
 ### **Cloning the Repository**
 
 ```bash
-git clone https://github.com/tgac/oncoBLADE.git
-cd oncoBLADE
+git clone https://github.com/tgac-vumc/Statescopeweb.git
+cd Statescopeweb
 ```
 
 ### **Installing Dependencies**
 
-Ensure you have Node.js installed. Then, install the required dependencies:
+Make sure you have Node.js installed.
+Install the required dependencies:
 
 ```bash
 npm install
 ```
 
+(or use `yarn install` if you prefer)
+
 ### **Starting the Development Server**
 
-To preview the website locally:
+To preview the site locally:
 
 ```bash
 npm run start
 ```
 
-Visit `http://localhost:3000` in your browser to view the site.
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### **Building the Website**
 
-To build the static files for production:
+To generate a production build:
 
 ```bash
 npm run build
 ```
 
-The generated static files will be in the `build` directory.
+Static files will be in the `build/` directory.
 
 ---
 
@@ -91,28 +92,24 @@ The generated static files will be in the `build` directory.
 
 ### **1. Editing the Sidebar**
 
-The sidebar is controlled by the `sidebars.js` file. To add a new document:
+The sidebar is managed in `sidebars.js`. To add a new page:
 
-- Open `sidebars.js` and locate the appropriate section.
-- Add the new document's ID. For example:
+* Open `sidebars.js`
+* Add the new document’s ID, for example:
 
-```javascript
-{
-  type: 'doc',
-  id: 'new-document', // Ensure 'new-document.md' exists in the docs folder
-  label: 'New Document',
-}
-```
+  ```js
+  {
+    type: 'doc',
+    id: 'new-document', // Corresponds to docs/new-document.md
+    label: 'New Document',
+  }
+  ```
 
 ### **2. Editing the Navbar**
 
-The top navigation bar is managed in `docusaurus.config.js`. To add a new item:
+Edit the navigation bar in `docusaurus.config.js`, under `themeConfig` → `navbar`:
 
-- Open `docusaurus.config.js`.
-- Locate the `navbar` section in `themeConfig`.
-- Add a new item to the `items` array. For example:
-
-```javascript
+```js
 {
   type: 'doc',
   docId: 'new-page',
@@ -123,21 +120,20 @@ The top navigation bar is managed in `docusaurus.config.js`. To add a new item:
 
 ### **3. Creating or Editing Markdown Files**
 
-Pages in Docusaurus are written in Markdown. Add new content by creating `.md` files in the `docs/` directory. Use the following elements in Markdown:
+Pages are written in Markdown.
+Add or update `.md` files in the `docs/` directory.
 
-#### Code Blocks
-To add code snippets, use triple backticks (\`\`\`):
+#### **Code Blocks Example**
 
-```markdown
+<pre>
 ```python
 # Example Python code
 def hello_world():
     print("Hello, world!")
 ```
-```
+</pre>
 
-#### Adding Links to Other Pages
-To link to another page in the docs:
+#### **Links to Other Pages**
 
 ```markdown
 [Go to Installation Guide](./installation.md)
@@ -147,42 +143,42 @@ To link to another page in the docs:
 
 ## **How to Contribute**
 
-### **1. Clone the Repository**
-Follow the [Getting Started](#getting-started) section to clone the repository.
+1. **Clone the Repository:**
+   See [Getting Started](#getting-started).
 
-### **2. Make Your Changes**
-Edit files locally. You can use any text editor or IDE.
+2. **Edit Files Locally:**
+   Use your favorite text editor or IDE.
 
-### **3. Commit Your Changes**
+3. **Commit Changes:**
 
-```bash
-git add .
-git commit -m "Describe your changes"
-```
+   ```bash
+   git add .
+   git commit -m "Describe your changes"
+   ```
 
-### **4. Push Changes**
+4. **Push Changes:**
 
-```bash
-git push origin branch-name
-```
+   ```bash
+   git push origin branch-name
+   ```
 
-Once pushed, changes will be reflected on the deployed site if you have permissions.
+   > Changes merged into `main` will update the live website automatically via GitHub Pages.
 
 ---
 
 ## **Hosting**
 
-The website is deployed on [Netlify](https://www.netlify.com/). Every push to the `main` branch triggers a redeployment. The live site can be accessed at:
+The website is deployed using **GitHub Pages**.
+Every push to the `main` branch triggers an update.
 
-[**Visit BLADE Website**](https://statescope.netlify.app/)
+**Live Site:** [https://tgac-vumc.github.io/Statescopeweb/](https://tgac-vumc.github.io/Statescopeweb/)
 
 ---
 
 ## **Contact**
 
-For questions or contributions, please contact:
+For questions, suggestions, or contributions, please contact:
 
-- **Repository Maintainer**: [Aryamaan Bose](https://github.com/aryamaanbose)
-- **GitHub Organization**: [TGAC](https://github.com/tgac-vumc)
-
+* [Yongsoo Kim](yo.kim@amsterdamumc.nl),[Aryamaan Bose](a.bose1@amsterdamumc.nl)
+* **GitHub Organization:** [TGAC](https://github.com/tgac-vumc)
 ---

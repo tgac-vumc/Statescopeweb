@@ -12,7 +12,6 @@ export default function Home() {
       <main
         className={styles.mainContainer}
         style={{
-          backgroundImage: `url(${useBaseUrl('img/background.png')})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

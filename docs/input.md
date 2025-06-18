@@ -79,7 +79,7 @@ expected_fractions = pd.read_csv("expected_cell_fractions.csv", index_col=0)
 
 ---
 
-## **⚠️ Important Notes**
+## **Important Notes**
 - Bulk RNA-seq data should be in linear scale (not log-transformed).
 - Signature matrices should be in log-scale.
 - Single-cell `.h5ad` files should contain filtered, QC’d, and annotated cell types.
@@ -88,7 +88,7 @@ expected_fractions = pd.read_csv("expected_cell_fractions.csv", index_col=0)
 ---
 
 ## **🔗 Further Resources**
-- 📄 **[Processed Signatures](processed-signatures.md)**
-- 📘 **[Python Tutorial](python.md)**
-- 🏷 **[GitHub Repository](https://github.com/tgac-vumc/Statescopeweb.git)**
+- **[Processed Signatures](processed-signatures.md)**
+- **[Python Tutorial](python.md)**
+- **[GitHub Repository](https://github.com/tgac-vumc/Statescopeweb.git)**
 

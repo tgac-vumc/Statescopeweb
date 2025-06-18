@@ -18,7 +18,10 @@
   z-index: 1;
 }
 
-.mainContainer > *, .mainContainer > * > *, .container, .imageContainer {
+.mainContainer > *,
+.mainContainer > * > *,
+.container,
+.imageContainer {
   background: transparent !important;
   position: relative;
   z-index: 2;
@@ -33,7 +36,11 @@
   background: transparent !important;
   max-width: 25vw !important;
   height: auto !important;
-  border: 0.3vw solid grey !important;
+}
+
+/* ✅ Dark mode: slightly dim logo for visual harmony */
+html[data-theme='dark'] .logoImage {
+  filter: brightness(0.85) contrast(1.1);
 }
 
 .buttonContainer {
@@ -43,20 +50,93 @@
   margin-top: 2vw !important;
   margin-bottom: 3vw !important;
   flex-wrap: wrap !important;
+  background-color: transparent !important;
 }
 
+/* Default button styles */
+.button,
+.downloadButton,
+.githubButton,
+.backButton {
+  padding: 1vw 2vw !important;
+  font-size: clamp(0.8rem, 2vw, 1.3rem) !important;
+  text-decoration: none !important;
+  color: rgb(86, 86, 86) !important;
+  border: 0.2vw solid grey !important;
+  border-radius: 0.5vw !important;
+  transition: background-color 0.3s ease, color 0.3s ease !important;
+  background-color: #ffffff !important;
+}
+
+/* Button hover (light mode) */
+.button:hover,
+.downloadButton:hover,
+.githubButton:hover,
+.backButton:hover {
+  background-color: #ffffff !important;
+  color: #357ABD !important;
+  border-color: #000000 !important;
+}
+
+/* Icon wrapper */
+.button .iconWrapper,
+.downloadButton .iconWrapper,
+.githubButton .iconWrapper {
+  background-color: #ffffff !important;
+}
+
+/* Dark mode: buttons */
+html[data-theme='dark'] .button,
+html[data-theme='dark'] .downloadButton,
+html[data-theme='dark'] .githubButton,
+html[data-theme='dark'] .backButton {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #aaaaaa !important;
+}
+
+/* Dark mode hover */
+html[data-theme='dark'] .button:hover,
+html[data-theme='dark'] .downloadButton:hover,
+html[data-theme='dark'] .githubButton:hover,
+html[data-theme='dark'] .backButton:hover {
+  background-color: #2a2a2a !important;
+  color: #ffeb3b !important;
+  border-color: #000000 !important;
+}
+
+/* Ensure icon wrapper stays white even in dark mode */
+html[data-theme='dark'] .button .iconWrapper,
+html[data-theme='dark'] .downloadButton .iconWrapper,
+html[data-theme='dark'] .githubButton .iconWrapper {
+  background-color: #ffffff !important;
+}
+
+/* Smaller back button */
+.backButton {
+  font-size: clamp(0.6rem, 1.5vw, 1.2rem) !important;
+  padding: 0.5vw 1vw !important;
+}
+
+/* Image container */
 .imageContainer {
   text-align: center !important;
-  border: 0.2vw solid grey !important;
   line-height: 0 !important;
 }
 
+/* Default image */
 .imageContainer img {
   display: block !important;
   width: 100%;
   height: auto;
 }
 
+/* ✅ Dark mode: slightly dim images for better blending */
+html[data-theme='dark'] .imageContainer img {
+  filter: brightness(0.85) contrast(1.1);
+}
+
+/* Badge style */
 .badge {
   position: absolute !important;
   top: 3vw !important;
@@ -84,60 +164,4 @@
 .badge:hover {
   background-color: #ffa09f !important;
   border-color: #000000 !important;
-}
-
-/* Default button styles (light mode) */
-.button {
-  padding: 1vw 2vw !important;
-  font-size: clamp(0.8rem, 2vw, 1.3rem) !important;
-  text-decoration: none !important;
-  color: rgb(86, 86, 86) !important;
-  border: 0.2vw solid grey !important;
-  border-radius: 0.5vw !important;
-  transition: background-color 0.3s ease, color 0.3s ease !important;
-  background-color: #ffffff !important;
-}
-
-/* Button hover (light mode) */
-.button:hover {
-  background-color: #ffffff !important;
-  color: #357ABD !important;
-  border-color: #000000 !important;
-}
-
-/* Button icon wrapper ensures white background */
-.button .iconWrapper {
-  background-color: #ffffff !important;
-}
-
-/* Dark mode specific styles for buttons */
-html[data-theme='dark'] .button {
-  background-color: #fffcfc !important; /* Dark background */
-  color: #000000 !important;            /* White text */
-  border-color: #888888 !important;     /* Light grey border for contrast */
-}
-
-/* Dark mode hover styles */
-html[data-theme='dark'] .button:hover {
-  background-color: #1b1b1b !important; 
-  color: #ffeb3b !important;            /* Yellow highlight for text */
-  border-color: #000000 !important;    /* Yellow border highlight */
-}
-
-/* Ensure icon wrapper stays white even in dark mode */
-html[data-theme='dark'] .button .iconWrapper {
-  background-color: #ffffff !important; /* Keep icons white for visibility */
-}
-
-
-.backButton {
-  font-size: clamp(0.6rem, 1.5vw, 1.2rem) !important;
-  padding: 0.5vw 1vw !important;
-}
-
-.downloadButton,
-.githubButton,
-.backButton {
-  background-color: #ffffff !important;
-  color: rgb(0, 0, 0) !important;
 }
