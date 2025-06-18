@@ -6,104 +6,89 @@ sidebar_label: Input Arguments
 
 # Input Arguments
 
-This page outlines the required inputs and optional parameters for running **OncoBLADE**.
+This page outlines the required inputs and optional parameters for running **Statescope**.
 
-## Required Datasets
 
-### 1. Signature Matrices
+## **Required Datasets**
 
-- **X**: An *Ngene* by *Ncell* matrix containing average gene expression profiles per cell type (a signature matrix) in **log-scale**.
+### **Signature Matrices**
+The **signature matrix** defines the gene expression profiles of different cell types.
 
-- **stdX**: An *Ngene* by *Ncell* matrix containing standard deviation per gene per cell type (a signature matrix of gene expression variability).
+#### **Available Options for Signature Matrices**
+There are **two ways** to specify the signature matrix:
 
-### 2. Bulk Gene Expression Data
+#### **📌 Option 1: Using Pre-processed Signatures**
+- Statescope provides pre-processed signatures for various tumor types.
+- To use these signatures, specify the **TumorType** and the number of cell types (`Ncelltypes`).
+- Available options for `TumorType` and `Ncelltypes` can be found in the **[Processed Signatures](processed-signatures.md)** page.
 
-- **Y**: An *Ngene* by *Nsample* matrix containing bulk gene expression data. This should be in **linear-scale** data without log-transformation.
+**Example using pre-processed signatures:**
+```python
+Statescope_model = Initialize_Statescope(Bulk, TumorType='PBMC', Ncelltypes=7, Ncores=40)
+```
+- `PBMC` is the **pre-processed signature** used.
+- `Ncelltypes=7` specifies the number of cell types to use.
+- `Ncores=40` defines the number of CPU cores allocated.
 
-### 3. Expected Cell Fractions (Optional)
+#### **📌 Option 2: Using Your Own Single-Cell RNA Data**
+- Users can also provide their own **custom single-cell data** in `.h5ad` format.
+- The **cell type annotations** should be present in the key specified in `celltype_key`.
 
-- **Expectation**: An *Nsample* by *Ncell* matrix containing the expected cell fractions used to inform **OncoBLADE** (optional).
+**Example using a custom signature matrix:**
+```python
+Statescope_model = Initialize_Statescope(
+    Bulk, 
+    Signature=Signature, 
+    celltype_key='leiden', 
+    Ncores=40
+)
+```
+- `Bulk` is the bulk RNA-seq dataset (transposed).
+- `Signature` is the **custom signature matrix** derived from single-cell data.
+- `celltype_key='leiden'` specifies the annotation key in the `.h5ad` file.
 
-## Options for Reference RNA-seq Data
-
-Users have two options for obtaining signature matrices:
-
-1. **Use Pre-processed Signatures**
-
-   - Proceed to the [Processed Dataset](processed-signatures.md) page to download and use pre-processed signature matrices.
-
-2. **Create Signatures from scRNA Data**
-
-   - Follow the instructions on the [Create Signatures](create-signatures.md) page to generate signatures from single-cell RNA-seq data.
-
-## Accepted Input Formats
-
-### **Bulk Data**
-
-- **Formats Accepted**:
-  - **CSV**: Comma-separated values file.
-  - **TSV**: Tab-separated values file.
-  - **Excel**: `.xlsx` or `.xls` files.
-  - **R Data Files**: `.RData` or `.rds` files containing expression matrices.
-
-- **Requirements**:
-  - Rows should represent genes, and columns should represent samples.
-  - Gene identifiers should be consistent across all datasets.
-
-### **Single-cell Data for Signature Creation**
-
-- **Formats Accepted**:
-  - **Seurat Object**: RDS files containing Seurat objects with counts and metadata.
-  - **SingleCellExperiment**: RDS files containing SingleCellExperiment objects.
-  - **Matrix Formats**: Sparse or dense matrices with accompanying metadata.
-  - **Text Files**: Counts matrices exported as CSV or TSV files with separate metadata files.
-
-- **Requirements**:
-  - Cell type annotations must be included in the metadata.
-  - Data should be preprocessed (e.g., quality control, normalization) before signature creation.
-
-## Model Hyperparameters
-
-Additional parameters for fine-tuning the **OncoBLADE** model:
-
-- **Ind_Marker**: Index for marker genes.
-
-  - **Default**: A logical vector `[True] * Ngene` (all genes used without filtering).
-  - **Usage**: Genes with `False` are excluded in the first phase (Empirical Bayes) for finding the best hyperparameters.
-
-- **Ind_sample**: Index for the samples used in the first phase (Empirical Bayes).
-
-  - **Default**: A logical vector `[True] * Nsample` (all samples used).
-
-- **Alpha**, **Alpha0**, **Kappa0**, **sY**: Hyperparameters used in the model.
-
-  - **Alpha**: Optimized during the model run.
-  - **Defaults**:
-    - `Alpha = 1`
-    - `Alpha0 = 0.1`
-    - `Kappa0 = 1`
-    - `sY = 1`
-
-- **IterMax**: Maximum number of iterations between variational parameter optimization by L-BFGS and updating hyperparameter Alpha.
-
-  - **Default**: `IterMax = 100`
-
-- **Nrep**: Number of random initial guesses used to run **OncoBLADE**.
-
-  - **Usage**: The best result in terms of the ELBO function will be chosen among the local optima.
-  - **Default**: `Nrep = 3`
-
-- **Njob**: Number of jobs executed in parallel.
-
-  - **Default**: `Njob = 10`
+**⚠️ Note:**  
+- **Single-cell data should be preprocessed** (filtering, QC, normalization).  
+- Statescope handles internal **normalization and preprocessing** automatically.  
+- Ensure the cell type annotations exist under the key **`celltype_key`** in `.obs`.
 
 ---
 
-**Next Steps:**
+### **Bulk Gene Expression Data**
+- **Y**: An *Ngene* by *Nsample* matrix containing bulk gene expression data.
+- Should be provided in **linear scale** (**without** log-transformation).
+- **Format:** Ideally, a **pandas DataFrame**.
 
-- If you have pre-processed signatures, proceed to the [Processed Signatures](processed-signatures) page.
-- To create signatures from your own scRNA-seq data, visit the [Create Signatures](create-signatures) page.
+**Example format in Python:**
+```python
+import pandas as pd 
+Bulk = pd.read_csv("bulk_expression.csv", index_col=0)
+```
 
 ---
 
-**Placeholder Notes:**
+### **Expected Cell Fractions (Optional)**
+- **Expectation**: An *Nsample* by *Ncelltype* matrix.
+- Specifies prior expectations of cell type proportions (**used by OncoBLADE**).
+- **Format:** Ideally, a **pandas DataFrame**.
+
+**Example format in Python:**
+```python
+expected_fractions = pd.read_csv("expected_cell_fractions.csv", index_col=0)
+```
+
+---
+
+## **⚠️ Important Notes**
+- Bulk RNA-seq data should be in linear scale (not log-transformed).
+- Signature matrices should be in log-scale.
+- Single-cell `.h5ad` files should contain filtered, QC’d, and annotated cell types.
+- pandas DataFrames** are recommended for structured inputs.
+
+---
+
+## **🔗 Further Resources**
+- 📄 **[Processed Signatures](processed-signatures.md)**
+- 📘 **[Python Tutorial](python.md)**
+- 🏷 **[GitHub Repository](https://github.com/tgac-vumc/Statescopeweb.git)**
+

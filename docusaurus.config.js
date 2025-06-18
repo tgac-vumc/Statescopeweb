@@ -4,8 +4,8 @@ import { themes as prismThemes } from 'prism-react-renderer';
 const config = {
   title: 'Statescope',
   tagline: 'Bayesian Log Normal Deconvolution',
-  favicon: 'img/favicon.ico',
-  url: 'https://tgac-vumc.github.io', // Your website URL
+  favicon: 'img/logo_final_small.png',
+  url: 'https://tgac-vumc.github.io',
   baseUrl: '/Statescopeweb/',
   organizationName: 'tgac-vumc',
   projectName: 'Statescopeweb',
@@ -13,6 +13,7 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   trailingSlash: false,
+  
 
   presets: [
     [
@@ -20,11 +21,11 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/tgac-vumc/Statescopeweb.git', // Link to edit docs in GitHub
+          editUrl: 'https://github.com/tgac-vumc/Statescopeweb.git',
         },
         blog: {
           showReadingTime: true,
-          editUrl: 'https://github.com/tgac-vumc/Statescopeweb.git', // Link to edit blog posts in GitHub
+          editUrl: 'https://github.com/tgac-vumc/Statescopeweb.git',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -34,10 +35,9 @@ const config = {
   ],
 
   themeConfig: {
-    image: 'img/logo_final_small.png', // Image used for social media previews
+    image: 'img/logo_final_small.png',
     navbar: {
       title: 'Statescope v1.0.0',
-    
       items: [
         {
           type: 'doc',
@@ -47,24 +47,29 @@ const config = {
         },
         {
           type: 'doc',
-          docId: 'processed-signatures', // Link to the processed signatures page
+          docId: 'processed-signatures',
           position: 'left',
-          label: 'Datasets', // Label for the new tab
+          label: 'Datasets',
         },
         {
-          label: 'Articles', // Dropdown menu for articles
+          label: 'Tutorials',
+          position: 'left',
+          type: 'doc',
+          docId: 'python', // Links directly to the first tutorial (Python)
+        },
+        {
+          label: 'Articles',
           position: 'left',
           items: [
             {
               type: 'doc',
-              docId: 'PBMC-deconvolution', // Ensure PMBC-deconvolution.md exists in the docs folder
-              label: 'Deconvolution of Lung Cancer Data',
+              docId: 'PBMC-deconvolution',
+              label: 'Deconvolution of PBMC Data',
             },
-            // Add more articles here
           ],
         },
         {
-          href: 'https://github.com/tgac-vumc/BLADE',
+          href: 'https://github.com/tgac-vumc/Statescope',
           label: 'GitHub',
           position: 'right',
         },

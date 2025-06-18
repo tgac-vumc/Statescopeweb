@@ -1,11 +1,11 @@
 .mainContainer {
   position: relative;
-  padding: 40px 20px; /* Double-check this path */
+  padding: 3vw 2vw;
   background-size: cover;
   background-position: center;
-  min-height: 100vh; /* Ensures the container is at least the height of the viewport */
-  width: 100%; /* Ensures the container spans the width of the viewport */
-  background-repeat: no-repeat; /* Prevents the background from repeating */
+  min-height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
 }
 
 .mainContainer::before {
@@ -14,69 +14,71 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-  z-index: 1; /* This should be lower than content but above the background */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
-/* Ensuring all child elements have transparent backgrounds */
 .mainContainer > *, .mainContainer > * > *, .container, .imageContainer {
-  background: transparent !important; /* Forces transparency */
+  background: transparent !important;
   position: relative;
-  z-index: 2; /* Ensures these are above the ::before element */
+  z-index: 2;
 }
-
 
 .logoContainer {
   background: transparent !important;
   text-align: center !important;
-  margin-bottom: 20px !important;
 }
 
 .logoImage {
   background: transparent !important;
-  max-width: 30% !important;
+  max-width: 25vw !important;
   height: auto !important;
+  border: 0.3vw solid grey !important;
 }
 
 .buttonContainer {
   display: flex !important;
   justify-content: center !important;
-  gap: 20px !important;
-  margin-top: 20px !important;
-  margin-bottom: 40px !important;
+  gap: 1vw !important;
+  margin-top: 2vw !important;
+  margin-bottom: 3vw !important;
+  flex-wrap: wrap !important;
 }
 
 .imageContainer {
   text-align: center !important;
+  border: 0.2vw solid grey !important;
+  line-height: 0 !important;
 }
 
-.responsiveImage {
-  max-width: 90% !important;
-  height: auto !important;
+.imageContainer img {
+  display: block !important;
+  width: 100%;
+  height: auto;
 }
 
 .badge {
   position: absolute !important;
-  top: 40px !important;
-  right: 35px !important;
+  top: 3vw !important;
+  right: 2.5vw !important;
   background-color: #f3f3f1 !important;
   color: #000000 !important;
-  padding: 10px 20px !important;
-  border: 2px solid #000000 !important;
-  border-radius: 20px !important;
-  font-size: 0.8rem !important;
+  padding: 0.8vw 1.5vw !important;
+  border: 0.2vw solid grey !important;
+  border-radius: 2vw !important;
+  font-size: clamp(0.5rem, 1.5vw, 0.8rem) !important;
   font-weight: bold !important;
   z-index: 1000 !important;
 }
 
 .badge::before {
   font-family: 'FontAwesome' !important;
-  margin-right: 10px !important;
-  font-size: 20px !important;
+  margin-right: 1vw !important;
+  font-size: clamp(1rem, 2vw, 1.5rem) !important;
 }
 
 .badge span {
-  margin-left: 5px !important;
+  margin-left: 0.5vw !important;
 }
 
 .badge:hover {
@@ -84,36 +86,58 @@
   border-color: #000000 !important;
 }
 
+/* Default button styles (light mode) */
 .button {
-  padding: 10px 20px !important;
-  font-size: 1.3rem !important;
+  padding: 1vw 2vw !important;
+  font-size: clamp(0.8rem, 2vw, 1.3rem) !important;
   text-decoration: none !important;
   color: rgb(86, 86, 86) !important;
-  border: 2px solid grey !important;
-  border-radius: 5px !important;
+  border: 0.2vw solid grey !important;
+  border-radius: 0.5vw !important;
   transition: background-color 0.3s ease, color 0.3s ease !important;
+  background-color: #ffffff !important;
 }
 
+/* Button hover (light mode) */
 .button:hover {
   background-color: #ffffff !important;
-  color: #0370c9 !important;
+  color: #357ABD !important;
   border-color: #000000 !important;
 }
 
+/* Button icon wrapper ensures white background */
+.button .iconWrapper {
+  background-color: #ffffff !important;
+}
+
+/* Dark mode specific styles for buttons */
+html[data-theme='dark'] .button {
+  background-color: #fffcfc !important; /* Dark background */
+  color: #000000 !important;            /* White text */
+  border-color: #888888 !important;     /* Light grey border for contrast */
+}
+
+/* Dark mode hover styles */
+html[data-theme='dark'] .button:hover {
+  background-color: #1b1b1b !important; 
+  color: #ffeb3b !important;            /* Yellow highlight for text */
+  border-color: #000000 !important;    /* Yellow border highlight */
+}
+
+/* Ensure icon wrapper stays white even in dark mode */
+html[data-theme='dark'] .button .iconWrapper {
+  background-color: #ffffff !important; /* Keep icons white for visibility */
+}
 
 
 .backButton {
-  font-size: 1.2rem !important;  /* Smaller text size */
-  padding: 5px 10px !important;  /* Less padding for a smaller button */
+  font-size: clamp(0.6rem, 1.5vw, 1.2rem) !important;
+  padding: 0.5vw 1vw !important;
 }
-
 
 .downloadButton,
 .githubButton,
 .backButton {
-  /* Common styling for all three buttons */
   background-color: #ffffff !important;
   color: rgb(0, 0, 0) !important;
 }
-
-

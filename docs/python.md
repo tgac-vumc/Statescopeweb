@@ -13,7 +13,7 @@ In this tutorial, we will walk through setting up and running the **Statescope**
 
 ## 1. Installation
 
-Please follow the [installation steps for Python](docid - installation) and create or activate your conda environment:
+Please follow the [Installation Steps](installation.md) and create or activate your conda environment:
 
 ```bash
 conda create -n statescope_env python=3.8
@@ -51,6 +51,8 @@ Bulk = pd.read_csv(
 )
 ```
 
+For loading your own Bulk RNA-seq data check the input requirements for the dataset on the [Input Requirements](input.md)
+
 ---
 
 ## 4. Initializing Statescope
@@ -60,10 +62,19 @@ Choose an appropriate tumor or tissue type. Currently supported options include:
 - `PDAC`  
 - `PBMC`  
 
+More details about the pre-processed scRNA references present in [Processed Signature Datasets](processed-signatures.md)
+
 ```python
 Statescope_model = Initialize_Statescope(Bulk, TumorType='NSCLC')
 ```
+For providing your own scRNA-seq dataset check [Input Requirements](input.md) for the correct format. 
 
+```python
+import scanpy as sc 
+file_path = 'scRNA.h5ad' ###scRNA data should be in h5ad format
+Signature = sc.read_h5ad(file_path)
+Statescope_model = Initialize_Statescope(Bulk, Signature = Signature, celltype_key= 'celltype_key', Ncores = 40) ####Specify celltype_key in the adata.obs
+```
 ---
 
 ## 5. Deconvolution
@@ -77,8 +88,8 @@ Statescope_model.Deconvolution()
 After deconvolution, you can extract the fractions of each gene across different cell types using:
 
 ```python
-fractions = Statescope_model.Fractions  # shape: [N_genes x N_cell_types]
-print(fractions.head())
+Fractions = Statescope_model.Fractions  # shape: [N_genes x N_cell_types]
+print(Fractions.head())
 ```
 
 ---
@@ -97,8 +108,9 @@ Statescope_model.Refinement()
 The refined gene expression profiles for each cell type can be accessed:
 
 ```python
-gene_expression_profiles = Statescope_model.GEX  # shape: [N_cell_types x N_genes]
-print(gene_expression_profiles.head())
+from Statescope import Extract_GEX
+##Gene expression of the cell type you want to extract 
+Extract_GEX(Statescope_model, 'Celltype')
 ```
 
 ---
@@ -114,8 +126,8 @@ Statescope_model.StateDiscovery()
 After running state discovery, you can extract information about the discovered sub-states (loadings, etc.) from the model. The specific attributes and methods will depend on how **Statescope** organizes its results. For example:
 
 ```python
-loadings = Statescope_model.Loadings  # Or relevant attribute
-print(loadings)
+from Statescope import Extract_StateLoadings
+Extract_StateLoadings(Statescope_model)
 ```
 
 *(Make sure to check the Statescope documentation for more details on these attributes.)*
@@ -136,7 +148,29 @@ Heatmap_Fractions(Statescope_model)
 
 This generates a heatmap of the cell-type fractions or scores across genes (or samples, depending on how your data is organized).
 
+### 8.2 Visualizing Purified Gene Expression Profiles
+
+```python
+from Statescope import Heatmap_GEX
+
+Heatmap_GEX(Statescope_model, 'Cell Type')
+```
+### 8.3 Visualizing Top Genes Per Cell State
+
+You can choose how many genes per state to be visualised in the Bar plot using the top_genes argument
+
+```python
+from Statescope import BarPlot_StateLoadings
+# Example Usage
+BarPlot_StateLoadings(Statescope_model, top_genes=1)
+```
+
 ---
+
+
+
+
+
 
 ## 9. Summary
 

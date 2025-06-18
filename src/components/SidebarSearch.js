@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import './SidebarSearch.css'; // Add this line to link the custom styles
+import './SidebarSearch.css'; // Import custom styles
 
 const SidebarSearch = () => {
   const [query, setQuery] = useState('');
@@ -8,54 +7,72 @@ const SidebarSearch = () => {
   const [searchData, setSearchData] = useState([]); // Store full search data
 
   useEffect(() => {
-    // Load search data from a JSON or API endpoint (adjust path if necessary)
+    // Load search data from a JSON file
     const fetchData = async () => {
       try {
-        const response = await fetch('/search-index.json'); // Replace with your data source
+        const response = await fetch(`${window.location.origin}/Statescopeweb/search-index.json`, {
+          headers: { 'Accept': 'application/json' },
+        });
+        ;
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const data = await response.json();
-        setSearchData(data); // Save full data in searchData
-        setResults(data); // Initially set results to full data
+        console.log("🔍 Fetched Search Data:", data); // Debugging log
+        setSearchData(data);
       } catch (error) {
-        console.error("Failed to load search data", error);
+        console.error("❌ Failed to load search data:", error);
       }
     };
+
     fetchData();
   }, []);
 
   const handleSearch = (event) => {
-    const searchTerm = event.target.value.toLowerCase();
+    const searchTerm = event.target.value.toLowerCase().trim();
     setQuery(searchTerm);
 
-    // Filter results from searchData instead of modifying the results state directly
+    if (!searchTerm) {
+      setResults([]); // Clear results if query is empty
+      return;
+    }
+
     const filteredResults = searchData.filter((result) =>
-      result.title.toLowerCase().includes(searchTerm) ||
-      result.content.toLowerCase().includes(searchTerm)
+      result.title?.toLowerCase().includes(searchTerm) ||
+      (result.content && result.content.toLowerCase().includes(searchTerm))
     );
 
+    console.log("🔍 Filtered Results:", filteredResults); // Debugging log
     setResults(filteredResults);
   };
 
   return (
     <div className="sidebar-search">
+      {/* Search Input */}
       <input
         type="text"
         placeholder="Search..."
         value={query}
         onChange={handleSearch}
-        className="sidebar-search-input" // Updated for external styling
+        className="sidebar-search-input"
       />
+
+      {/* Search Results */}
       <div className="sidebar-search-results">
+        {console.log("📌 UI Rendering Results:", results)} {/* Debugging log */}
         {query && results.length > 0 ? (
           results.map((result, index) => (
             <div key={index} className="sidebar-search-result-item">
-              <Link to={result.url} className="sidebar-search-result-link">
+              <a href={result.url} className="sidebar-search-result-link">
                 <strong>{result.title}</strong>
-              </Link>
+              </a>
               <p>{result.content.slice(0, 100)}...</p>
             </div>
           ))
         ) : (
-          query && <p>No results found</p>
+          query && <p> No results found</p>
         )}
       </div>
     </div>
@@ -63,4 +80,3 @@ const SidebarSearch = () => {
 };
 
 export default SidebarSearch;
-

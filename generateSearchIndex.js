@@ -4,7 +4,10 @@ const matter = require('gray-matter');
 const { marked } = require('marked');
 
 const docsDir = path.join(__dirname, 'docs');
-const outputFilePath = path.join(__dirname, 'static', 'search-index.json'); // Adjust path as needed
+const outputFilePath = path.join(__dirname, 'static', 'search-index.json');
+
+// Set your site's base URL here
+const baseUrl = '/Statescopeweb';
 
 // Function to get all .md files in a directory
 function getAllMarkdownFiles(dirPath, arrayOfFiles = []) {
@@ -26,11 +29,11 @@ function generateSearchIndex() {
   const index = files.map((file) => {
     const fileContent = fs.readFileSync(file, 'utf-8');
     const { data, content } = matter(fileContent);
-    const snippet = marked(content).replace(/(<([^>]+)>)/gi, '').slice(0, 200);
+    const snippet = (marked(content).replace(/(<([^>]+)>)/gi, '').slice(0, 200) || "No content available");
 
     return {
       title: data.title || path.basename(file, '.md'),
-      url: `/docs/${path.relative(docsDir, file).replace(/\\/g, '/').replace('.md', '')}`,
+      url: `${baseUrl}/docs/${path.relative(docsDir, file).replace(/\\/g, '/').replace('.md', '')}`,
       content: snippet,
     };
   });

@@ -5,59 +5,37 @@ title: Processed Signatures
 
 # Processed Signatures
 
-This page hosts our in-house single-cell RNA (scRNA) signatures for various applications. Below, you will find details about the processed signatures, including their source, cell type information, gene count, and download links.
+This page hosts our in-house single-cell RNA sequencing (scRNA-seq) signatures for various cancer types. Below, you will find details about the processed signatures.
 
----
+The repository for these datasets can be found here: 
 
-## Available Signatures
+**📌 [Statescope Data GitHub Repository](https://github.com/tgac-vumc/Statescopeweb.git).**
 
-| Dataset                | Level                 | Number of Cell Types | Key Cell Types                            | Total Genes   | Source                                  | Download                                                                                 |
-|------------------------|-----------------------|----------------------|-------------------------------------------|---------------|-----------------------------------------|-----------------------------------------------------------------------------------------|
-| **Lung Cancer Signature** | **Level 1 (Major)**  | **Placeholder**      | Epithelial, Immune, Stromal               | **Placeholder** | [Figshare](https://figshare.com/placeholder) | <a href="https://figshare.com/placeholder" download class="download-button">Download</a> |
-|                        | **Level 2 (Subtypes)** | **Placeholder**      | Basal, Luminal, T Cells, Fibroblasts      | **Placeholder** | [Figshare](https://figshare.com/placeholder) |                                                                                         |
-|                        | **Level 3 (Detailed)** | **Placeholder**      | CD4+ T cells, CD8+ T cells, CAFs          | **Placeholder** | [Figshare](https://figshare.com/placeholder) |                                                                                         |
+## **Available Cancer Signatures**
 
----
+| Tumor Type       | Number of Cell Types Available | Cell Types                 | Source           |
+|------------------|--------------------------------|----------------------------|------------------|
+| **🫁 NSCLC**            | 15                             |['Alveolar_cell', 'Monocyte', 'CD4_T_cell', 'B_cell', 'Plasma_cell', 'Fibroblast', 'Macrophage', 'NK_cell', 'CD8_T_cell', 'Neutrophil', 'Dendritic_cell', 'Endothelial_cell', 'Tumor_cell', 'Mast_cell', 'Regulatory_T_cell'] | Placeholder Source |
+| **🎗️ PDAC**             | 7,8                            |['T_NK', 'Endothelial', 'B_Plasma', 'Mast', 'Epithelial', 'Myeloid', 'CAFs'], ['Basal', 'CAFs', 'Myeloid', 'Mast', 'Classical', 'T_NK', 'Endothelial', 'B_Plasma'] | Placeholder Source |
+| **🩸 PBMC**             | 17, 7                          |['T_cells_Treg', 'T_cells_CD8+_effector_memory', 'T_cells_CD4-CD8-', 'B_cells_memory', 'B_cells', 'Monocytes_non-classical', 'Dendritic_cells', 'Monocytes_classical', 'T_cells_CD4+_naive', 'T_cells_CD4+_effector', 'T_cells_CD4+_effector_memory', 'NK_cells', 'Early_NK_cells', 'T_cells_CD8+_naive', 'T_cells_CD8+_effector', 'ILC', 'T_cells_CD4+_central_memory'], ['T_cells_CD4+', 'Dendritic_cells', 'T_cells_CD8+', 'T_cells_CD4-CD8-', 'B_cells', 'NK_cells', 'Monocytes'] | Placeholder Source |
 
-## Signature File Contents
+## **Using Statescope with Processed Signatures**
+The `Statescope` package allows you to integrate pre-processed single-cell signatures into your deconvolution workflows.
 
-Each signature file is provided in a **pickle format** (`.pickle`) and contains the following data:
+**📌 [Statescope GitHub Repository](https://github.com/tgac-vumc/Statescope.git)**
 
-1. **Gene-Level Statistics:**
-   - **Mean Expression:** Average gene expression values across all cells for each cell type.
-   - **Variance:** Variability in expression for each gene across cells.
-   - **Standard Deviation:** Standard deviation of gene expression for each gene within each cell type.
+### **Example Usage in Python**
+To load a processed signature for analysis, use:
 
-2. **Gene Lists:**
-   - **Total Genes:** The total number of genes included in the dataset.
-   - **Highly Variable Genes (HVGs):** Genes identified as highly variable, which contribute significantly to the analysis.
-   - **Differentially Expressed Genes (DEGs):** Genes selected by **AutoGenes**, including the number of DEGs identified.
+```python
+from Statescope import Initialize_Statescope
 
-3. **Cell Types:**
-   - A complete list of cell types present in the dataset, organized by hierarchical levels (e.g., major, subtype, detailed).
-
----
-
-### How to Use
-
-1. Select the desired signature from the table above.
-2. Click the **Download** button to access the file.
-3. Use the appropriate level based on your analysis requirements:
-   - **Level 1 (Major):** Broad categories of cell types.
-   - **Level 2 (Subtypes):** Subdivisions within major categories.
-   - **Level 3 (Detailed):** Detailed classification of cell types.
-
-4. Refer to the [Tutorial] for guidance on using these signatures in your workflows.
-
----
-
-## Notes
-
-- The **pickle file** is Python-compatible. Users of other programming environments (e.g., R) may need to convert the file using a Python script.
-- Ensure that gene identifiers in the signature match those in your bulk RNA-seq data to avoid discrepancies during analysis.
-- This page will be regularly updated as new signatures are added. If you have feedback or specific requests, please contact us.
-
----
-
-> **Feedback:** For specific datasets or additional levels of detail, please reach out to our team through the contact form on the main site.
+# Initialize the Statescope model with the desired parameters
+Statescope_model = Initialize_Statescope(
+    subset_bulk, 
+    TumorType='NSCLC', 
+    Ncelltypes=15, 
+    Ncores=40
+)
+```
 

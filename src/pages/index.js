@@ -6,14 +6,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-
 export default function Home() {
   return (
     <Layout title="Statescope" description="Bayesian Log Normal Deconvolution">
-      <main className={styles.mainContainer}>
-        
+      <main
+        className={styles.mainContainer}
+        style={{
+          backgroundImage: `url(${useBaseUrl('img/background.png')})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed',
+          position: 'relative',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(255, 255, 255, 0.85)', // Adjust opacity for readability
+            zIndex: 1,
+          }}
+        />
+
         {/* NEW BUTTON (TOP LEFT) */}
-        <div className={styles.topLeftContainer}>
+        <div className={styles.topLeftContainer} style={{ position: 'relative', zIndex: 2 }}>
           <a
             href={useBaseUrl('docs/PBMC-deconvolution')}
             className={`${styles.button} ${styles.backButton}`}
@@ -23,12 +43,14 @@ export default function Home() {
           </a>
         </div>
 
-        <div className={styles.badge}>Under Development</div>
+        <div className={styles.badge} style={{ position: 'relative', zIndex: 2 }}>
+          Under Development
+        </div>
 
-        <div className="container">
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <div className={styles.logoContainer}>
             <img
-              src={useBaseUrl('img/Logo_Statescope.png')}
+              src={useBaseUrl('img/Logo_Statescope.jpg')}
               alt="Statescope Logo"
               className={styles.logoImage}
             />
@@ -41,7 +63,7 @@ export default function Home() {
               <FontAwesomeIcon icon={faDownload} /> Download
             </a>
             <a
-              href="https://github.com/tgac-vumc/OncoBLADE.git"
+              href="https://github.com/tgac-vumc/Statescope.git"
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles.button} ${styles.githubButton}`}
@@ -52,7 +74,7 @@ export default function Home() {
 
           <div className={styles.imageContainer}>
             <img
-              src={useBaseUrl('img/Statescope_Overview.png')}
+              src={useBaseUrl('img/Statescope_Overview.jpg')}
               alt="Statescope Overview"
               className={styles.responsiveImage}
             />

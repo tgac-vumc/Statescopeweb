@@ -11,7 +11,9 @@ function SearchButton() {
   useEffect(() => {
     const fetchSearchData = async () => {
       try {
-        const response = await fetch('/search-index.json');
+        const response = await fetch(`${window.location.origin}/Statescopeweb/search-index.json`, {
+          headers: { 'Accept': 'application/json' },
+        });
         const data = await response.json();
         setSearchData(data);
       } catch (error) {
