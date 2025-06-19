@@ -55,7 +55,7 @@ Statescope.Deconvolution(
 | **Temperature**    | `[float,float]` \| `None`          | **None**  | Start/stop temperatures for simulated annealing.                                      |
 | **IterMax**        | `int`                              | **100**   | Upper limit on optimisation iterations.                                               |
 
-**Side-effects** → adds **Fractions** and **BLADE** fields to the object.
+Adds **Fractions** and **BLADE** fields to the object.
 
 ---
 
@@ -70,7 +70,7 @@ Statescope.Refinement(weight=100, GeneList=None)
 | **weight**   | `int`                 | **100**  | Down-weights the fraction objective when purifying expression. |
 | **GeneList** | `list[str]` \| `None` | **None** | Restrict refinement to this gene subset.                       |
 
-**Side-effects** → adds **GEX**, **Omega** and **BLADE\_final**.
+Adds **GEX**, **Omega** and **BLADE\_final**.
 
 ---
 
@@ -98,7 +98,7 @@ Statescope.StateDiscovery(
 | **min\_cophenetic** | `float`                                           | **0.9**   | Cut-off to accept a candidate *k*.                                   |
 | **max\_clusters**   | `int`                                             | **10**    | Upper bound when searching for *k*.                                  |
 
-**Side-effects** → adds **StateScores**, **StateLoadings**, **cNMF**, **CopheneticCoefficients**.
+Adds **StateScores**, **StateLoadings**, **cNMF**, **CopheneticCoefficients**.
 
 ---
 

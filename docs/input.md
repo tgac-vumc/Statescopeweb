@@ -17,7 +17,7 @@ The **signature matrix** defines the gene expression profiles of different cell 
 #### **Available Options for Signature Matrices**
 There are **two ways** to specify the signature matrix:
 
-#### **📌 Option 1: Using Pre-processed Signatures**
+#### **Option 1: Using Pre-processed Signatures**
 - Statescope provides pre-processed signatures for various tumor types.
 - To use these signatures, specify the **TumorType** and the number of cell types (`Ncelltypes`).
 - Available options for `TumorType` and `Ncelltypes` can be found in the **[Processed Signatures](processed-signatures.md)** page.
@@ -30,7 +30,7 @@ Statescope_model = Initialize_Statescope(Bulk, TumorType='PBMC', Ncelltypes=7, N
 - `Ncelltypes=7` specifies the number of cell types to use.
 - `Ncores=40` defines the number of CPU cores allocated.
 
-#### **📌 Option 2: Using Your Own Single-Cell RNA Data**
+#### **Option 2: Using Your Own Single-Cell RNA Data**
 - Users can also provide their own **custom single-cell data** in `.h5ad` format.
 - The **cell type annotations** should be present in the key specified in `celltype_key`.
 
