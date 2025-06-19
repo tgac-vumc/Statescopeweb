@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.6.1">
 <title data-rh="true">Input Arguments | Statescope</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://tgac-vumc.github.io/Statescopeweb/img/logo_final_small.png"><meta data-rh="true" name="twitter:image" content="https://tgac-vumc.github.io/Statescopeweb/img/logo_final_small.png"><meta data-rh="true" property="og:url" content="https://tgac-vumc.github.io/Statescopeweb/docs/input"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Input Arguments | Statescope"><meta data-rh="true" name="description" content="This page outlines the required inputs and optional parameters for running Statescope."><meta data-rh="true" property="og:description" content="This page outlines the required inputs and optional parameters for running Statescope."><link data-rh="true" rel="icon" href="/Statescopeweb/img/logo_final_small.png"><link data-rh="true" rel="canonical" href="https://tgac-vumc.github.io/Statescopeweb/docs/input"><link data-rh="true" rel="alternate" href="https://tgac-vumc.github.io/Statescopeweb/docs/input" hreflang="en"><link data-rh="true" rel="alternate" href="https://tgac-vumc.github.io/Statescopeweb/docs/input" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/Statescopeweb/blog/rss.xml" title="Statescope RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/Statescopeweb/blog/atom.xml" title="Statescope Atom Feed"><link rel="stylesheet" href="/Statescopeweb/assets/css/styles.66de9588.css">
-<script src="/Statescopeweb/assets/js/runtime~main.0c6a7b03.js" defer="defer"></script>
+<script src="/Statescopeweb/assets/js/runtime~main.0fa8cb9f.js" defer="defer"></script>
 <script src="/Statescopeweb/assets/js/main.ca5b9ef7.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -16,7 +16,7 @@
 <p>The <strong>signature matrix</strong> defines the gene expression profiles of different cell types.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="available-options-for-signature-matrices"><strong>Available Options for Signature Matrices</strong><a href="#available-options-for-signature-matrices" class="hash-link" aria-label="Direct link to available-options-for-signature-matrices" title="Direct link to available-options-for-signature-matrices">​</a></h4>
 <p>There are <strong>two ways</strong> to specify the signature matrix:</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-option-1-using-pre-processed-signatures"><strong>📌 Option 1: Using Pre-processed Signatures</strong><a href="#-option-1-using-pre-processed-signatures" class="hash-link" aria-label="Direct link to -option-1-using-pre-processed-signatures" title="Direct link to -option-1-using-pre-processed-signatures">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="option-1-using-pre-processed-signatures"><strong>Option 1: Using Pre-processed Signatures</strong><a href="#option-1-using-pre-processed-signatures" class="hash-link" aria-label="Direct link to option-1-using-pre-processed-signatures" title="Direct link to option-1-using-pre-processed-signatures">​</a></h4>
 <ul>
 <li>Statescope provides pre-processed signatures for various tumor types.</li>
 <li>To use these signatures, specify the <strong>TumorType</strong> and the number of cell types (<code>Ncelltypes</code>).</li>
@@ -29,7 +29,7 @@
 <li><code>Ncelltypes=7</code> specifies the number of cell types to use.</li>
 <li><code>Ncores=40</code> defines the number of CPU cores allocated.</li>
 </ul>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="-option-2-using-your-own-single-cell-rna-data"><strong>📌 Option 2: Using Your Own Single-Cell RNA Data</strong><a href="#-option-2-using-your-own-single-cell-rna-data" class="hash-link" aria-label="Direct link to -option-2-using-your-own-single-cell-rna-data" title="Direct link to -option-2-using-your-own-single-cell-rna-data">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="option-2-using-your-own-single-cell-rna-data"><strong>Option 2: Using Your Own Single-Cell RNA Data</strong><a href="#option-2-using-your-own-single-cell-rna-data" class="hash-link" aria-label="Direct link to option-2-using-your-own-single-cell-rna-data" title="Direct link to option-2-using-your-own-single-cell-rna-data">​</a></h4>
 <ul>
 <li>Users can also provide their own <strong>custom single-cell data</strong> in <code>.h5ad</code> format.</li>
 <li>The <strong>cell type annotations</strong> should be present in the key specified in <code>celltype_key</code>.</li>
