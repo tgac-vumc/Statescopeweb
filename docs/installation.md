@@ -41,22 +41,16 @@ To manage dependencies, use a Conda enviroment for a consistent environment setu
 1. **Create the Conda environment**:
 
    ```bash
-   conda create -n statescope_env python=3.8
-   conda activate statescope_env
+   conda create -n Statescope python=3.10
+   conda activate Statescope
    ```
 
-2. **Activate the environment**:
-
-   ```bash
-   conda activate statescope_env
-   ```
-
-3. **Install Statescope**
+2. **Install Statescope**
 
 To install **Statescope** using pip, run the following command:
 
 ```bash
-pip install --extra-index-url https://test.pypi.org/simple/ Statescope==0.2.0
+pip install Statescope
 ```
 
   
