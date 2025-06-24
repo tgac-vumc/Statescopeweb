@@ -65,7 +65,6 @@ Refinement is formulated as a regularized least-squares minimization problem. Th
 
 **Output:**  
 - Refined gene expression matrices (one for each cell type) that provide improved estimates.
-- Variability matrices that quantify the confidence in these refined estimates.
 
 ---
 
@@ -87,7 +86,6 @@ State discovery is performed using convex non-negative matrix factorization (cNM
 **Output:**  
 - A state scores matrix that quantifies the contribution of each latent state across samples.
 - A state loadings matrix that shows the association strength of each gene with each latent state.
-- A fully characterized cNMF model ready for downstream analysis and visualization.
 
 
 ## Conclusion
