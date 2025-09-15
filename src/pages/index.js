@@ -19,6 +19,7 @@ export default function Home() {
           position: 'relative',
         }}
       >
+        {/* translucent overlay for readability */}
         <div
           style={{
             position: 'absolute',
@@ -26,13 +27,13 @@ export default function Home() {
             left: 0,
             width: '100%',
             height: '100%',
-            backgroundColor: 'rgba(255, 255, 255, 0.85)', // Adjust opacity for readability
+            backgroundColor: 'rgba(255, 255, 255, 0.85)',
             zIndex: 1,
           }}
         />
 
-        {/* NEW BUTTON (TOP LEFT) */}
-        <div className={styles.topLeftContainer} style={{ position: 'relative', zIndex: 2 }}>
+        {/* example analysis link */}
+        <div className={`${styles.topLeftContainer} fadeInDown`}>
           <a
             href={useBaseUrl('docs/PBMC-deconvolution')}
             className={`${styles.button} ${styles.backButton}`}
@@ -42,19 +43,21 @@ export default function Home() {
           </a>
         </div>
 
-        <div className={styles.badge} style={{ position: 'relative', zIndex: 2 }}>
+        {/* development badge */}
+        <div className={`${styles.badge} fadeInDown`} style={{ position: 'relative', zIndex: 2 }}>
           Under Development
         </div>
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className={styles.logoContainer}>
+          <div className={`${styles.logoContainer} fadeInDown`}>
             <img
               src={useBaseUrl('img/Logo_Statescope.jpg')}
               alt="Statescope Logo"
               className={styles.logoImage}
             />
           </div>
-          <div className={styles.buttonContainer}>
+
+          <div className={`${styles.buttonContainer} fadeInUp`}>
             <a
               href={useBaseUrl('docs/installation')}
               className={`${styles.button} ${styles.downloadButton}`}
@@ -71,7 +74,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className={styles.imageContainer}>
+          <div className={`${styles.imageContainer} fadeIn`}>
             <img
               src={useBaseUrl('img/Statescope_Overview.jpg')}
               alt="Statescope Overview"

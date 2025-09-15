@@ -13,6 +13,13 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   trailingSlash: false,
+
+  stylesheets: [
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap',
+      type: 'text/css',
+    },
+  ],
   
 
   presets: [
@@ -92,6 +99,7 @@ const config = {
     colorMode: {
       defaultMode: 'light',
       disableSwitch: true,
+      respectPrefersColorScheme: true,
     },
   },
 };

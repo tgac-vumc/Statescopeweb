@@ -7,7 +7,8 @@
   --ifm-code-color: #2d2d2d;
   --ifm-navbar-background-color: #ffffff;
   --ifm-navbar-link-color: #333333;
-  --ifm-color-primary-dark: #357ABD; /* Darker shade of primary color */
+  --ifm-color-primary-dark: #357ABD; 
+  --ifm-background-gradient: linear-gradient(135deg, #e2ecff 0%, #ffffff 100%);/* Darker shade of primary color */
 }
 
 
@@ -22,6 +23,7 @@
   --ifm-navbar-background-color: #1a1a1a;
   --ifm-navbar-link-color: #cccccc;
   --ifm-color-primary-dark: #64b5f6; /* Darker shade for dark mode */
+  --ifm-background-gradient: linear-gradient(135deg, #0d0d0d 0%, #1f1f1f 100%)
 }
 
 
@@ -29,10 +31,12 @@
 /* Global base size */
 html {
   font-size: 18px;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family:
+    'Inter',
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
@@ -46,6 +50,8 @@ body {
   font-size: 1rem;        /* equals 16px */
   line-height: 1.6;
   color: var(--ifm-font-color-base);
+  background: var(--ifm-background-gradient);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Headers */
@@ -205,6 +211,12 @@ pre:hover {
 .navbar {
   height: auto;
   padding: 30px 0; /* Add padding to center the logo */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+}
+
+html[data-theme='dark'] .navbar {
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
 }
 
 /* Navbar link hover effect */
@@ -371,3 +383,53 @@ pre[class*="language-"] {
 
 
 
+/* Animation helpers */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.fadeIn,
+.fadeInUp,
+.fadeInDown {
+  opacity: 0;
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease forwards;
+}
+
+.fadeInUp {
+  animation: fadeInUp 1s ease forwards;
+}
+
+.fadeInDown {
+  animation: fadeInDown 1s ease forwards;
+}

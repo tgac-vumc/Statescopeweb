@@ -38,9 +38,9 @@
   height: auto !important;
 }
 
-/* ✅ Dark mode: slightly dim logo for visual harmony */
+/* Dark mode logo tweak */
 html[data-theme='dark'] .logoImage {
-  filter: brightness(0.85) contrast(1.1);
+  filter: brightness(0.9) contrast(1.1);
 }
 
 .buttonContainer {
@@ -61,7 +61,7 @@ html[data-theme='dark'] .logoImage {
   padding: 1vw 2vw !important;
   font-size: clamp(0.8rem, 2vw, 1.3rem) !important;
   text-decoration: none !important;
-  color: rgb(1, 1, 1) !important;
+  color: rgb(86, 86, 86) !important;
   border: 0.2vw solid grey !important;
   border-radius: 0.5vw !important;
   transition: background-color 0.3s ease, color 0.3s ease !important;
@@ -100,7 +100,7 @@ html[data-theme='dark'] .button:hover,
 html[data-theme='dark'] .downloadButton:hover,
 html[data-theme='dark'] .githubButton:hover,
 html[data-theme='dark'] .backButton:hover {
-  background-color: #191919 !important;
+  background-color: #2a2a2a !important;
   color: #ffeb3b !important;
   border-color: #000000 !important;
 }
@@ -131,9 +131,9 @@ html[data-theme='dark'] .githubButton .iconWrapper {
   height: auto;
 }
 
-/* ✅ Dark mode: slightly dim images for better blending */
+/* Dark mode: dim images slightly for contrast */
 html[data-theme='dark'] .imageContainer img {
-  filter: brightness(0.85) contrast(1.1);
+  filter: brightness(0.8);
 }
 
 /* Badge style */

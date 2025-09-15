@@ -29,8 +29,8 @@ Make sure you have the necessary dependencies installed before proceeding.
 Below is an example of how you might structure your imports within a Python script or Jupyter notebook. Adjust paths and filenames as needed.
 
 ```python
-import Statescope
-from Statescope import Initialize_Statescope
+import Statescope.Statescope
+from Statescope.Statescope import Initialize_Statescope
 import pandas as pd
 import pickle
 ```
