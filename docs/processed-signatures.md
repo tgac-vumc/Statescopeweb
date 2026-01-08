@@ -9,7 +9,7 @@ This page hosts our in-house single-cell RNA sequencing (scRNA-seq) signatures f
 
 The repository for these datasets can be found here: 
 
-**📌 [Statescope Data GitHub Repository](https://github.com/tgac-vumc/Statescopeweb.git).**
+**📌 [Statescope Data GitHub Repository](https://github.com/tgac-vumc/StatescopeData.git).**
 
 ## **Available Cancer Signatures**
 
