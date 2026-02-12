@@ -6,9 +6,8 @@ sidebar_position: 5
 
 # About Statescope
 
-Statescope is a comprehensive computational framework for dissecting bulk gene expression data by integrating high-resolution single-cell information. It employs a multi-step pipeline to estimate cellular compositions, refine cell type–specific expression profiles, and uncover latent cellular states. The framework leverages advanced algorithmic and mathematical concepts—such as iterative optimization, non-negative matrix factorization, and consensus clustering—to provide a robust and detailed analysis of cellular heterogeneity.
+Statescope is a comprehensive computational framework for dissecting bulk gene expression data by integrating high-resolution single-cell information. It employs a multi-step pipeline to estimate cellular compositions, refine cell type–specific expression profiles, and uncover latent cellular states. 
 
----
 
 ## Overview of the Pipeline
 
@@ -40,7 +39,7 @@ To estimate the fraction of each cell type in a bulk sample by “unmixing” th
 - **Marker Genes & Single-Cell Profiles:**  
   High-resolution single-cell expression data (including measures of variability) for a predefined set of marker genes.
  
-Deconvolution in Statescope is implemented within a Bayesian framework. Here, the bulk expression is assumed to be generated as a weighted combination of cell type–specific expression profiles, where the weights (cell fractions) follow a probability distribution (typically a Dirichlet distribution). The method minimizes the difference between the observed bulk data and a reconstruction computed from the single-cell signatures using an iterative least-squares optimization approach, with additional regularization to prevent overfitting. Multiple random initializations are used to ensure robustness and avoid local minima.
+Deconvolution in Statescope is implemented within a Bayesian framework. Here, the bulk expression is assumed to be generated as a weighted combination of cell type–specific expression profiles, where the weights (cell fractions) follow a probability distribution (typically a Dirichlet distribution). The method minimizes the difference between the observed bulk data and a reconstruction computed from the single-cell signatures using an iterative optimization approach.
 
 **Output:**  
 - A model object containing optimized parameters.
@@ -61,7 +60,7 @@ To enhance the initial cell type–specific expression estimates by incorporatin
 - **Aligned Bulk Data:**  
   Bulk expression data filtered to include all genes common to both datasets.
 
-Refinement is formulated as a regularized least-squares minimization problem. The goal is to adjust the cell type-specific expression estimates so that the combined (weighted) expression profiles reconstruct the observed bulk data as accurately as possible. Simultaneously, a regularization term penalizes deviations from the original single-cell expression profiles. This balance between data fidelity and prior consistency is achieved through iterative updates—using alternating or gradient-based methods—until convergence is reached.
+The goal is to adjust the cell type-specific expression estimates so that the combined (weighted) expression profiles reconstruct the observed bulk data as accurately as possible. Si
 
 **Output:**  
 - Refined gene expression matrices (one for each cell type) that provide improved estimates.
@@ -87,9 +86,5 @@ State discovery is performed using convex non-negative matrix factorization (cNM
 - A state scores matrix that quantifies the contribution of each latent state across samples.
 - A state loadings matrix that shows the association strength of each gene with each latent state.
 
-
-## Conclusion
-
-Statescope combines rigorous Bayesian inference, iterative optimization, and advanced matrix factorization techniques to deliver a high-resolution view of cellular composition and heterogeneity. By integrating bulk RNA-seq with single-cell data, it not only estimates cell type proportions but also refines expression profiles and identifies hidden cellular states—offering a powerful tool for studying complex biological systems.
 
 ---

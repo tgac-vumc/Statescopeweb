@@ -13,11 +13,11 @@ The repository for these datasets can be found here:
 
 ## **Available Cancer Signatures**
 
-| Tumor Type       | Number of Cell Types Available | Cell Types                 | Source           |
-|------------------|--------------------------------|----------------------------|------------------|
-| **NSCLC**            | 15                             |['Alveolar_cell', 'Monocyte', 'CD4_T_cell', 'B_cell', 'Plasma_cell', 'Fibroblast', 'Macrophage', 'NK_cell', 'CD8_T_cell', 'Neutrophil', 'Dendritic_cell', 'Endothelial_cell', 'Tumor_cell', 'Mast_cell', 'Regulatory_T_cell'] | Placeholder Source |
-| **PDAC**             | 7,8,24                            |['T_NK', 'Endothelial', 'B_Plasma', 'Mast', 'Epithelial', 'Myeloid', 'CAFs'], ['Basal', 'CAFs', 'Myeloid', 'Mast', 'Classical', 'T_NK', 'Endothelial', 'B_Plasma'], ['Classical', 'Intermediate', 'Basal', 'Tuft cells', 'Endothelial', 'myCAF', 'Pericyte', 'apCAF', 'iCAF', 'Schwann', 'Mono', 'Mac', 'Tcytotoxic', 'Thelper', 'B', 'ILC3 cells', 'Mono.Mac', 'pDC', 'DC', 'Treg', 'NK', 'MDSC', 'Tmemory', 'Normal epithelial'] | Placeholder Source |
-| **PBMC**             | 17, 7                          |['T_cells_Treg', 'T_cells_CD8+_effector_memory', 'T_cells_CD4-CD8-', 'B_cells_memory', 'B_cells', 'Monocytes_non-classical', 'Dendritic_cells', 'Monocytes_classical', 'T_cells_CD4+_naive', 'T_cells_CD4+_effector', 'T_cells_CD4+_effector_memory', 'NK_cells', 'Early_NK_cells', 'T_cells_CD8+_naive', 'T_cells_CD8+_effector', 'ILC', 'T_cells_CD4+_central_memory'], ['T_cells_CD4+', 'Dendritic_cells', 'T_cells_CD8+', 'T_cells_CD4-CD8-', 'B_cells', 'NK_cells', 'Monocytes'] | Placeholder Source |
+| Tumor Type | Number of Cell Types Available | Cell Types |
+|-----------|--------------------------------|-----------|
+| **NSCLC** | 15 | ['Alveolar_cell', 'Monocyte', 'CD4_T_cell', 'B_cell', 'Plasma_cell', 'Fibroblast', 'Macrophage', 'NK_cell', 'CD8_T_cell', 'Neutrophil', 'Dendritic_cell', 'Endothelial_cell', 'Tumor_cell', 'Mast_cell', 'Regulatory_T_cell'] |
+| **PDAC** | 7, 8, 24 | ['T_NK', 'Endothelial', 'B_Plasma', 'Mast', 'Epithelial', 'Myeloid', 'CAFs'], ['Basal', 'CAFs', 'Myeloid', 'Mast', 'Classical', 'T_NK', 'Endothelial', 'B_Plasma'], ['Classical', 'Intermediate', 'Basal', 'Tuft cells', 'Endothelial', 'myCAF', 'Pericyte', 'apCAF', 'iCAF', 'Schwann', 'Mono', 'Mac', 'Tcytotoxic', 'Thelper', 'B', 'ILC3 cells', 'Mono.Mac', 'pDC', 'DC', 'Treg', 'NK', 'MDSC', 'Tmemory', 'Normal epithelial'] |
+| **PBMC** | 17, 7 | ['T_cells_Treg', 'T_cells_CD8+_effector_memory', 'T_cells_CD4-CD8-', 'B_cells_memory', 'B_cells', 'Monocytes_non-classical', 'Dendritic_cells', 'Monocytes_classical', 'T_cells_CD4+_naive', 'T_cells_CD4+_effector', 'T_cells_CD4+_effector_memory', 'NK_cells', 'Early_NK_cells', 'T_cells_CD8+_naive', 'T_cells_CD8+_effector', 'ILC', 'T_cells_CD4+_central_memory'], ['T_cells_CD4+', 'Dendritic_cells', 'T_cells_CD8+', 'T_cells_CD4-CD8-', 'B_cells', 'NK_cells', 'Monocytes'] |
 
 ## **Using Statescope with Processed Signatures**
 The `Statescope` package allows you to integrate pre-processed single-cell signatures into your deconvolution workflows.

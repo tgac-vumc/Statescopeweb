@@ -433,3 +433,140 @@ pre[class*="language-"] {
 .fadeInDown {
   animation: fadeInDown 1s ease forwards;
 }
+
+
+/* Version number styling */
+.release-version {
+  font-weight: 700;
+  color: #57606a; /* muted gray for old versions */
+}
+
+/* Highlight latest version */
+.release-version.latest {
+  color: #d73a49; /* Scanpy / GitHub red */
+}
+
+/* LATEST badge */
+.release-tag {
+  margin-left: 0.6em;
+  padding: 0.15em 0.55em;
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  background-color: #d73a49;
+  color: #ffffff;
+  border-radius: 999px;
+
+  vertical-align: middle;
+}
+
+/* ===============================
+   Navbar base
+   =============================== */
+.navbar {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;               /* ⬆️ overall size */
+  letter-spacing: 0.015em;
+
+  height: 64px;                     /* ⬆️ more presence */
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+}
+
+/* Logo alignment + scale */
+.navbar__logo {
+  margin-right: 0.85rem;
+}
+
+.navbar__logo img {
+  height: 34px;
+}
+
+/* ===============================
+   Navbar title
+   =============================== */
+.navbar__title {
+  font-size: 1.87rem !important; /* 30% larger than 1.4375rem */
+  font-weight: 700 !important;
+  letter-spacing: -0.013em !important;
+}
+
+/* Version badge (clean, subtle) */
+.navbar__title::after {
+  content: 'v1.0.5';
+  font-size: 1.14rem !important; /* 30% larger than 0.875rem */
+  font-weight: 600 !important;
+  margin-left: 0.73rem !important; /* 30% larger than 0.5625rem */
+  padding: 3.25px 9.75px !important; /* 30% larger than 2.5px 7.5px */
+  border-radius: 9.75px !important; /* 30% larger than 7.5px */
+
+  background: #eef2ff !important;
+  color: #4338ca !important;
+  vertical-align: middle !important;
+}
+
+/* ===============================
+   Navbar links
+   =============================== */
+
+
+.navbar__item {
+  font-size: 1.2rem !important;                  /* ⬆️ readable */
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0 0.6rem;
+}
+
+/* Hover: professional, not flashy */
+.navbar__item:hover {
+  color: #2563eb;
+}
+
+/* Active page */
+.navbar__item--active {
+  font-weight: 600;
+  color: #1e40af;
+}
+
+/* Right-side items slightly quieter */
+.navbar__items--right .navbar__item {
+  font-size: 0.95rem;
+}
+
+
+/* Apply font size to ALL navbar links, including dropdowns */
+.navbar__item .navbar__link {
+  font-size: 1.2rem !important;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Explicitly target dropdown trigger (Articles) */
+.navbar__item--dropdown > .navbar__link {
+  font-size: 1.2rem !important;
+  font-weight: 500;
+}
+
+/* Dropdown menu items */
+.dropdown__link {
+  font-size: 1.05rem;
+}
+
+
+/* ===============================
+   Dark mode tweaks
+   =============================== */
+html[data-theme='dark'] .navbar {
+  box-shadow: 0 1px 0 rgba(255,255,255,0.08);
+}
+
+html[data-theme='dark'] .navbar__item:hover {
+  color: #93c5fd;
+}
+
+html[data-theme='dark'] .navbar__title::after {
+  background: rgba(99,102,241,0.15);
+  color: #c7d2fe;
+}

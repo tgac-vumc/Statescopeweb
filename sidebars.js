@@ -25,12 +25,19 @@ const sidebars = {
         {
           type: 'doc',
           id: 'python',
-          label: 'Python',
+          label: 'Basic Tutorial Python',
         },
         {
           type: 'doc',
+          id: 'advanced-tutorial_python',
+          label: 'Advanced Tutorial Python',
+        },
+        
+
+        {
+          type: 'doc',
           id: 'r',
-          label: 'R',
+          label: 'R Tutorial',
         },
       ],
     },
@@ -44,6 +51,12 @@ const sidebars = {
       type: 'doc',
       id: 'troubleshooting',
       label: 'Troubleshooting',
+    },
+
+    {
+      type: 'doc',
+      id: 'development',
+      label: 'Development',
     },
   ],
 };

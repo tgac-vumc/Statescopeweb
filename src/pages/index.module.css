@@ -1,6 +1,14 @@
+
+/* Remove Docusaurus default vertical spacing */
+.container {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+
 .mainContainer {
   position: relative;
-  padding: 3vw 2vw;
+  padding: 1rem 2vw 3vw !important; /* ⬅️ MUCH smaller top padding */
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -29,14 +37,20 @@
 
 .logoContainer {
   background: transparent !important;
-  text-align: center !important;
+  display: flex;
+  justify-content: center!important;
+  align-items: center!important;
+  width: 100%;
+  margin: 1.5rem auto 1.2rem auto;
 }
 
+
 .logoImage {
-  background: transparent !important;
-  max-width: 25vw !important;
+  max-width: min(700px, 80%) !important;
   height: auto !important;
 }
+
+
 
 /* Dark mode logo tweak */
 html[data-theme='dark'] .logoImage {
@@ -58,15 +72,27 @@ html[data-theme='dark'] .logoImage {
 .downloadButton,
 .githubButton,
 .backButton {
-  padding: 1vw 2vw !important;
-  font-size: clamp(0.8rem, 2vw, 1.3rem) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.6rem !important;
+
+  padding: 0.9rem 1.6rem !important;
+  font-size: clamp(0.9rem, 1.6vw, 1.2rem) !important;
+
   text-decoration: none !important;
   color: rgb(86, 86, 86) !important;
-  border: 0.2vw solid grey !important;
-  border-radius: 0.5vw !important;
-  transition: background-color 0.3s ease, color 0.3s ease !important;
+
+  border: 2px solid grey !important; /* 🔥 fixed unit */
+  border-radius: 10px !important;
+
   background-color: #ffffff !important;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
+
+  line-height: 1 !important;
+  white-space: nowrap !important;
 }
+
 
 /* Button hover (light mode) */
 .button:hover,
@@ -164,4 +190,187 @@ html[data-theme='dark'] .imageContainer img {
 .badge:hover {
   background-color: #ffa09f !important;
   border-color: #000000 !important;
+}
+
+
+.heroTitle {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: -0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.heroSubtitle {
+  font-size: clamp(1rem, 1vw, 1.3rem);
+  color: #57606a;
+  max-width: 860px;
+  width: min(82%, 760px);
+  margin: 0 auto;
+  line-height: 1.6;
+}
+/* Feature cards */
+.featuresSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.125rem;
+  margin: 3vw 0 !important;
+  /* Increase base type for the features area */
+  font-size: clamp(0.8625rem, 1.65vw, 1.125rem) !important;
+  line-height: 1.3125 !important;
+  }
+
+  /* Larger headings & body inside feature cards */
+  .featuresSection .featureCard h3 {
+    font-size: clamp(1.125rem, 2.25vw, 1.5rem) !important;
+    line-height: 0.84 !important;
+  }
+
+  .featuresSection .featureCard p {
+    font-size: clamp(0.8625rem, 1.8vw, 1.05rem) !important;
+    line-height: 1.35 !important;
+  }
+
+/* Individual card box styling and larger type */
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.75rem; /* a bit more breathing room */
+  border: 1px solid rgba(15, 23, 42, 0.06); /* subtle boxed outline */
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* stronger hover emphasis while retaining the box */
+.featureCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 44px rgba(15, 23, 42, 0.10);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+/* Larger headings for each feature */
+.featureCard h3 {
+  margin-bottom: 0.6rem;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  line-height: 1.15;
+}
+
+/* Larger body copy and improved readability */
+.featureCard p {
+  color: #57606a;
+  line-height: 1.6;
+  font-size: clamp(0.98rem, 1.7vw, 1.12rem);
+  margin: 0; /* keep consistent spacing handled by container */
+}
+
+/* Optional: ensure actions/links inside card sit at bottom */
+.featureCard .cardFooter {
+  margin-top: auto;
+}
+
+/* Trust text */
+.trustText {
+  text-align: center;
+  color: #6e7781;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+}
+
+
+.heroBox h1 {
+  font-size: clamp(2rem, 6vw, 5rem)!important;
+  font-weight: 700!important;
+  letter-spacing: -0.04em !important;
+  margin-bottom: 2rem !important;
+}
+
+.heroBox p {
+  font-size: clamp(1.4rem, 2vw, 2rem) !important;
+  line-height: 1.75 !important;
+  max-width: 1500px !important;
+  margin: 0 auto !important;
+  color: #374151 !important;
+}
+
+.heroBox {
+  max-width: 1500px;
+  margin: 1rem auto 1rem !important; /* ⬅️ pulled up */
+  padding: 2.8rem 3.5rem;
+
+  background: #ffffff;
+  border-radius: 28px !important;
+  text-align: center;
+}
+
+/* Slightly reduce type scale inside heroBox */
+.heroBox h1 {
+  font-size: clamp(1.6rem, 5vw, 4rem) !important;
+  line-height: 1.05 !important;
+}
+
+.heroBox p {
+  font-size: clamp(1.1rem, 1.8vw, 1.6rem) !important;
+  line-height: 1.6 !important;
+}
+
+
+/* push announcements box to a fixed location inside the page (not the viewport sidebar) */
+.heroLowerGrid {
+  position: relative;
+}
+/* fixed to top-left of viewport (front page) */
+
+/* Fixed to top-left of the PAGE (viewport) */
+.announcementBox {
+  position: absolute;
+
+  top: 4rem;
+  left: 1.7rem;
+
+  z-index: 10000;
+
+  background-color: #f2f2f2;
+  color: #111;
+
+  padding: 1rem 1.25rem;
+  width: 320px;
+  max-width: 35vw;
+
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+
+/* small tweaks for the inner list and heading */
+.announcementBox h3 {
+  margin: 0 0 0.6rem 0;
+  font-size: 1rem;
+}
+.announcementBox ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+.announcementBox li {
+  margin-bottom: 0.5rem;
+}
+
+/* responsive: on smaller viewports, restore normal flow so it doesn't block content */
+@media (max-width: 768px) {
+  .announcementBox {
+    position: static;
+    width: 100%;
+    max-width: none;
+    border-radius: 10px;
+    box-shadow: none;
+    margin: 0.75rem 0;
+    left: auto;
+    top: auto;
+  }
 }
