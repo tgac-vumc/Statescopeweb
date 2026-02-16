@@ -8,6 +8,7 @@ sidebar_label: Input Arguments
 
 This page outlines the required inputs and optional parameters for running **Statescope**.
 
+-----
 
 ## **Required Datasets**
 

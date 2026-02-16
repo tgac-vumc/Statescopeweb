@@ -75,17 +75,6 @@ const config = {
           position: 'left',
         },
         {
-          label: 'Articles',
-          position: 'left',
-          items: [
-            {
-              type: 'doc',
-              docId: 'PBMC-deconvolution',
-              label: 'PBMC Deconvolution',
-            },
-          ],
-        },
-        {
           to: '/docs/release-notes',
           label: 'Release Notes',
           position: 'right',

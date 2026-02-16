@@ -1,572 +1,556 @@
+/* =========================================================
+   Statescope — Production-grade Docusaurus Custom CSS
+   Goals:
+   - Fix cramped markdown spacing
+   - Fix search dropdown being hidden (z-index / stacking)
+   - Make navbar look cohesive + professional
+   - Avoid global "*" overrides that break Docusaurus
+   ========================================================= */
+
+/* -------------------------
+   Theme tokens
+-------------------------- */
 :root {
-  /* Light mode default styles */
-  --ifm-background-color: #ffffff;
-  --ifm-font-color-base: #000000;
+  --ss-font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ss-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --ss-text: #0f172a;
+  --ss-text-muted: #475569;
+
+  --ss-border: rgba(15, 23, 42, 0.12);
+  --ss-border-soft: rgba(15, 23, 42, 0.08);
+
+  --ss-surface: #ffffff;
+  --ss-surface-2: #f8fafc;
+
+  --ss-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --ss-shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+  /* Docusaurus core tokens */
   --ifm-color-primary: #06458d;
-  --ifm-code-background: #f5f5f5;
-  --ifm-code-color: #2d2d2d;
-  --ifm-navbar-background-color: #ffffff;
-  --ifm-navbar-link-color: #333333;
-  --ifm-color-primary-dark: #357ABD; 
-  --ifm-background-gradient: linear-gradient(135deg, #e2ecff 0%, #ffffff 100%);/* Darker shade of primary color */
+  --ifm-color-primary-dark: #053a77;
+  --ifm-color-primary-darker: #043365;
+  --ifm-color-primary-light: #0b57b0;
+  --ifm-color-primary-lighter: #2563eb;
+
+  --ifm-background-color: #ffffff;
+  --ifm-font-color-base: var(--ss-text);
+  --ifm-heading-color: var(--ss-text);
+
+  /* Keep pages white (your preference) */
+  --ss-page-bg: #ffffff;
+
+  /* Typography / readability */
+  --ifm-leading: 1.7;
+  --ifm-code-font-size: 92%;
+  --ifm-global-radius: 10px;
+
+  /* Navbar height */
+  --ss-navbar-height: 68px;
 }
 
+/* Dark mode */
+html[data-theme='dark'] {
+  --ifm-background-color: #0b1220;
+  --ifm-font-color-base: rgba(255, 255, 255, 0.92);
+  --ifm-heading-color: rgba(255, 255, 255, 0.95);
 
+  --ss-text: rgba(255, 255, 255, 0.92);
+  --ss-text-muted: rgba(255, 255, 255, 0.72);
 
-[data-theme='dark'] {
-  /* Dark mode styles */
-  --ifm-background-color: #121212;
-  --ifm-font-color-base: #e0e0e0;
-  --ifm-color-primary: #fdea1e;
-  --ifm-code-background: #2d2d2d;
-  --ifm-code-color: #f5f5f5;
-  --ifm-navbar-background-color: #1a1a1a;
-  --ifm-navbar-link-color: #cccccc;
-  --ifm-color-primary-dark: #64b5f6; /* Darker shade for dark mode */
-  --ifm-background-gradient: linear-gradient(135deg, #0d0d0d 0%, #1f1f1f 100%)
+  --ss-surface: rgba(255, 255, 255, 0.03);
+  --ss-surface-2: rgba(255, 255, 255, 0.045);
+
+  --ss-border: rgba(255, 255, 255, 0.14);
+  --ss-border-soft: rgba(255, 255, 255, 0.10);
+
+  --ss-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --ss-shadow-md: 0 14px 40px rgba(0, 0, 0, 0.35);
+
+  --ss-page-bg: #0b1220;
 }
 
-
-
-/* Global base size */
+/* -------------------------
+   Base layout / typography
+-------------------------- */
 html {
-  font-size: 18px;
+  font-size: 16.5px; /* keeps dev/prod consistent */
   scroll-behavior: smooth;
+  zoom: 0.8;
 }
 
 body {
-  font-family:
-    'Inter',
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    "Open Sans",
-    "Helvetica Neue",
-    sans-serif;
-  font-size: 1rem;        /* equals 16px */
-  line-height: 1.6;
+  font-family: var(--ss-font-sans);
+  line-height: var(--ifm-leading);
+  background: var(--ss-page-bg);
   color: var(--ifm-font-color-base);
-  background: var(--ifm-background-gradient);
-  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Headers */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  line-height: 1.3;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-  color: var(--ifm-heading-color, var(--ifm-font-color-base));
+/* Keep box-sizing sane without nuking Docusaurus */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+/* Docusaurus wrappers */
+.main-wrapper {
+  background: var(--ss-page-bg);
+}
 
-/* Paragraphs & lists */
-p, ul, ol {
-  margin-bottom: 1em;
-  font-size: 1rem;
+/* -------------------------
+   Markdown spacing (fix “cramped”)
+-------------------------- */
+.theme-doc-markdown {
+  max-width: 980px; /* nicer reading width */
+}
+
+.markdown {
+  font-size: 1.02rem;
+}
+
+.markdown p {
+  margin: 0.75rem 0 1.05rem;
+  color: var(--ss-text);
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0.6rem 0 1.1rem;
+  padding-left: 1.25rem;
+}
+
+.markdown li {
+  margin: 0.4rem 0;
+}
+
+/* Headings: more breathing room + prevent “stuck to content below” */
+.markdown h1 {
+  margin-top: 0.2rem;
+  margin-bottom: 1.0rem;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.markdown h2 {
+  margin-top: 2.2rem;
+  margin-bottom: 0.85rem;
+  padding-top: 0.35rem;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  border-top: 1px solid var(--ss-border-soft);
+}
+
+.markdown h3 {
+  margin-top: 1.7rem;
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.015em;
+  font-weight: 750;
+}
+
+.markdown h4 {
+  margin-top: 1.35rem;
+  margin-bottom: 0.55rem;
+  font-weight: 700;
+}
+
+/* First heading shouldn’t add a big border/padding effect */
+.markdown h2:first-of-type {
+  border-top: none;
+  padding-top: 0;
 }
 
 /* Links */
-a {
+.markdown a {
   color: var(--ifm-color-primary);
   text-decoration: none;
+  font-weight: 650;
 }
-a:hover {
-  color: var(--ifm-color-primary-dark);
+.markdown a:hover {
   text-decoration: underline;
+  color: var(--ifm-color-primary-lighter);
 }
 
-/* Inline code */
-code {
-  font-family:
-    SFMono-Regular, Consolas, "Liberation Mono",
-    Menlo, Courier, monospace;
-  background: var(--ifm-code-background);
-  padding: 0.15em 0.3em;
-  border-radius: 4px;
-  font-size: 0.95em;
-}
-
-/* Block code */
-pre[class*="language-"] {
-  font-family:
-    SFMono-Regular, Consolas, "Liberation Mono",
-    Menlo, Courier, monospace;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  background: var(--ifm-code-background);
-  color: var(--ifm-code-color);
-  padding: 1rem;
-  border-radius: 6px;
-  overflow-x: auto;
-  border: 1px solid rgba(0,0,0,0.1);
-}
-
-[data-theme="dark"] pre[class*="language-"] {
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-/* Sidebar and navbar links */
-.navbar__link,
-.menu__link {
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-/* Tables */
-table {
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-/* Global styles with dynamic scaling using 'rem' */
-* {
-  background-color: var(--ifm-background-color) !important;
-  color: var(--ifm-font-color-base);
-  border-color: var(--ifm-color-primary) !important;
-  font-size: 1rem !important; /* 1rem equals the font-size of the html element, adjusts dynamically */
-  font-family: 'Calibri', sans-serif !important;
-  box-shadow: none !important;
-  border-radius: 4px !important;
-  transition: all 0.3s ease;
-}
-
-/* Responsive font sizing for various devices */
-@media (max-width: 1200px) {
-  html {
-    font-size: 95%; /* Slightly smaller font size for tablets and below */
-  }
-}
-
-@media (max-width: 992px) {
-  html {
-    font-size: 90%; /* Smaller font size for small tablets */
-  }
-}
-
-@media (max-width: 768px) {
-  html {
-    font-size: 85%; /* Even smaller for mobile devices */
-  }
-}
-
-@media (max-width: 576px) {
-  html {
-    font-size: 80%; /* Smallest size for very small devices */
-  }
-}
-
-
-
-
-
-[data-theme='dark'] pre {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-pre:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-
-
-
-/* Responsive adjustments for small screens */
-@media (max-width: 768px) {
-  pre .copyButton {
-    top: 5px;
-    right: 5px;
-    padding: 4px 8px;
-    font-size: 0.75rem;
-  }
-}
-
-/* Adjust the logo size */
-.navbar__logo img {
-  width: 50px; /* Set the desired width */
-  height: auto; /* Maintain aspect ratio */
-  display: block; /* Ensures it behaves well inside flex containers */
-  margin: 0 auto; /* Centers the logo horizontally */
-  margin-right: 10px; /* Add padding to the right */
-}
-
-/* Center the logo and add padding to the navbar */
-.navbar__inner {
-  display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Vertically center the logo */
-  justify-content: center; /* Horizontally center the logo */
-  padding: 0 20px; /* Add padding to the sides */
-}
-/* Optional: Adjust the navbar height to accommodate a larger logo */
+/* -------------------------
+   Navbar (cohesive + styled)
+   Fixes "separate box" feel + alignment
+-------------------------- */
 .navbar {
-  height: auto;
-  padding: 30px 0; /* Add padding to center the logo */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6px);
+  height: 100%;
+  background: transparent;
+  border-bottom: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  position: static;
+  flex: 1 1 auto;
 }
 
-html[data-theme='dark'] .navbar {
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
-}
-
-/* Navbar link hover effect */
-.navbar__link:hover {
-  color: var(--ifm-color-primary) !important;
-}
-
-/* Sidebar link hover effect */
-.menu__link:hover {
-  color: var(--ifm-color-primary) !important;
-}
-
-/* Sidebar active link styling */
-.menu__link--active {
-  color: var(--ifm-color-primary) !important;
-}
-
-/* Set hyperlinks in the main content to the primary color */
-.markdown a {
-  color: var(--ifm-color-primary) !important;
-}
-
-/* Optional: Hyperlink hover effect */
-.markdown a:hover {
-  text-decoration: underline;
-}
-
-.markdown a:hover {
-  color: var(--ifm-color-primary-dark) !important;
-}
-
-
-/* Smaller icons on mobile */
-@media (max-width: 768px) {
-  .navbar-icon-button svg,
-  .header-github-link {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-/* Tab group wrapper */
-.tab-group,
-.tabs__list {
+.ssNavbarShell {
   display: flex;
-  gap: 0.5rem; /* Space between tabs */
-  margin-bottom: 1rem; /* Space below tabs and content */
+  align-items: center;
+  height: var(--ss-navbar-height);
+  background:
+    radial-gradient(circle at 1px 1px, rgba(37, 99, 235, 0.14) 1px, transparent 0),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92));
+  background-size: 16px 16px, 100% 100%;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.12);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 5000;
 }
 
-/* Individual tab styling */
-.tabs__item {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 4px; /* Rounded corners for each tab */
-   /* No background for unselected tabs */
-  color: var(--ifm-font-color-base); /* Default font color */
- /* Border around each tab */
-  transition: all 0.3s ease;
-  font-weight: normal;
+html[data-theme='dark'] .ssNavbarShell {
+  background:
+    radial-gradient(circle at 1px 1px, rgba(56, 189, 248, 0.18) 1px, transparent 0),
+    linear-gradient(90deg, rgba(2, 6, 23, 0.9), rgba(15, 23, 42, 0.78));
+  background-size: 18px 18px, 100% 100%;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
 }
 
-/* TAB SELECTED COLOUR FONT  */
-/* Selected tab styling */
-.tabs__item--active {
-  background-color: var(--ifm-background-color); /* Highlighted background */
-  color: #d63384 ; /* Contrast text */
-  border: 2px solid var(--ifm-color-primary-dark); /* Visible border around the selected tab */
-  font-weight: bold; /* Emphasize selected tab */
+.ssNavbarShell::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.0), rgba(37, 99, 235, 0.55), rgba(14, 165, 233, 0.0));
+  opacity: 0.7;
+  pointer-events: none;
 }
 
-/* Tabs container styling */
-.tabs-container {
-  border: 2px solid var(--ifm-color-primary); /* Border around all tabs */
-  padding: 1rem; /* Space between main content and border */
-  border-radius: 8px; /* Rounded corners for the entire container */ /* Matches theme */
-  margin-bottom: 1.5rem; /* Space below the container */
+.navbar__inner {
+  align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
-
-
-
-
-/* Inline code blocks */
-code {
-  background-color: var(--ifm-background-color); /* Light gray background */
-  color: #d63384; /* Highlighted pink text */
-  font-family: 'Courier New', Courier, monospace;
-  padding: 0.2em 0.4em;
-  border-radius: 4px;
-}
-
-
-
-/* Python-specific colors */
-pre[class*="language-python"] .token.keyword {
-  color: #c678dd; /* Purple for Python keywords */
-}
-
-pre[class*="language-python"] .token.function {
-  color: #61afef; /* Blue for function names */
-}
-
-pre[class*="language-python"] .token.string {
-  color: #98c379; /* Green for strings */
-}
-
-/* R-specific colors */
-pre[class*="language-r"] .token.keyword {
-  color: #e06c75; /* Red for R keywords */
-}
-
-pre[class*="language-r"] .token.function {
-  color: #61afef; /* Blue for function names */
-}
-
-pre[class*="language-r"] .token.string {
-  color: #98c379; /* Green for strings */
+/* Logo and title */
+.navbar__title {
+  font-weight: 850;
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
 }
 
 
-/* General Code Block Styling */
-pre[class*="language-"] {
-  background: var(--ifm-code-background); /* Background color based on theme */
-  color: var(--ifm-code-color); /* Font color based on theme */ /* More padding for readability */
-  border-radius: 8px; /* Smooth corners */
-  font-family: 'Courier New', Courier, monospace; /* Monospace font */
-  font-size: 0.95rem; /* Slightly smaller font for compactness */
-  line-height: 1.6; /* Comfortable line height */
-  border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
-  overflow-x: auto; /* Enable horizontal scrolling for long lines */
-  position: relative; /* Required for the copy button */
-   /* Add space below the code block */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for light theme */
-}
-
-
-/* Dark Mode: Adjust border and shadow */
-[data-theme="dark"] pre[class*="language-"] {
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for dark mode */
-  box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1); /* Soft shadow for dark mode */
-}
-
-.download-button {
+/* Version badge (clean) 
+to chnage version on website logo*/
+.navbar__title::after {
+  content: 'v1.0.7';
   display: inline-block;
-  text-decoration: none;
-  border-radius: 25px; /* Rounded button */
-  font-size: 18px;
-  font-weight: bold; /* Background color for the button */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  transition: all 0.3s ease; /* Smooth hover effect */
-  cursor: pointer;
-}
-
-.download-button:hover { /* Gradient reverse */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* More shadow on hover */
-  transform: scale(1.03); /* Slight scale-up */
-}
-
-.download-button:active { /* Darker on click */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow reduce on click */
-  transform: scale(0.85); /* Press effect */
-}
-
-
-
-/* Animation helpers */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-.fadeIn,
-.fadeInUp,
-.fadeInDown {
-  opacity: 0;
-}
-
-.fadeIn {
-  animation: fadeIn 1s ease forwards;
-}
-
-.fadeInUp {
-  animation: fadeInUp 1s ease forwards;
-}
-
-.fadeInDown {
-  animation: fadeInDown 1s ease forwards;
-}
-
-
-/* Version number styling */
-.release-version {
-  font-weight: 700;
-  color: #57606a; /* muted gray for old versions */
-}
-
-/* Highlight latest version */
-.release-version.latest {
-  color: #d73a49; /* Scanpy / GitHub red */
-}
-
-/* LATEST badge */
-.release-tag {
-  margin-left: 0.6em;
-  padding: 0.15em 0.55em;
-  font-size: 0.7em;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-
-  background-color: #d73a49;
-  color: #ffffff;
+  margin-left: 0.55rem;
+  padding: 0.16rem 0.5rem;
   border-radius: 999px;
-
+  font-size: 0.85rem;
+  font-weight: 750;
+  background: rgba(37, 99, 235, 0.10);
+  color: rgba(37, 99, 235, 0.95);
   vertical-align: middle;
 }
 
-/* ===============================
-   Navbar base
-   =============================== */
-.navbar {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-weight: 600;
-  font-size: 1.05rem;               /* ⬆️ overall size */
-  letter-spacing: 0.015em;
-
-  height: 64px;                     /* ⬆️ more presence */
-  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
-}
-
-/* Logo alignment + scale */
-.navbar__logo {
-  margin-right: 0.85rem;
-}
-
-.navbar__logo img {
-  height: 34px;
-}
-
-/* ===============================
-   Navbar title
-   =============================== */
-.navbar__title {
-  font-size: 1.87rem !important; /* 30% larger than 1.4375rem */
-  font-weight: 700 !important;
-  letter-spacing: -0.013em !important;
-}
-
-/* Version badge (clean, subtle) */
-.navbar__title::after {
-  content: 'v1.0.5';
-  font-size: 1.14rem !important; /* 30% larger than 0.875rem */
-  font-weight: 600 !important;
-  margin-left: 0.73rem !important; /* 30% larger than 0.5625rem */
-  padding: 3.25px 9.75px !important; /* 30% larger than 2.5px 7.5px */
-  border-radius: 9.75px !important; /* 30% larger than 7.5px */
-
-  background: #eef2ff !important;
-  color: #4338ca !important;
-  vertical-align: middle !important;
-}
-
-/* ===============================
-   Navbar links
-   =============================== */
-
-
-.navbar__item {
-  font-size: 1.2rem !important;                  /* ⬆️ readable */
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  padding: 0 0.6rem;
-}
-
-/* Hover: professional, not flashy */
-.navbar__item:hover {
-  color: #2563eb;
-}
-
-/* Active page */
-.navbar__item--active {
-  font-weight: 600;
-  color: #1e40af;
-}
-
-/* Right-side items slightly quieter */
-.navbar__items--right .navbar__item {
-  font-size: 0.95rem;
-}
-
-
-/* Apply font size to ALL navbar links, including dropdowns */
-.navbar__item .navbar__link {
-  font-size: 1.2rem !important;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-
-/* Explicitly target dropdown trigger (Articles) */
-.navbar__item--dropdown > .navbar__link {
-  font-size: 1.2rem !important;
-  font-weight: 500;
-}
-
-/* Dropdown menu items */
-.dropdown__link {
-  font-size: 1.05rem;
-}
-
-
-/* ===============================
-   Dark mode tweaks
-   =============================== */
-html[data-theme='dark'] .navbar {
-  box-shadow: 0 1px 0 rgba(255,255,255,0.08);
-}
-
-html[data-theme='dark'] .navbar__item:hover {
-  color: #93c5fd;
-}
-
 html[data-theme='dark'] .navbar__title::after {
-  background: rgba(99,102,241,0.15);
-  color: #c7d2fe;
+  background: rgba(253, 234, 30, 0.12);
+  color: rgba(253, 234, 30, 0.95);
+}
+
+/* Navbar links (fix random bold “Articles”) */
+.navbar__item .navbar__link {
+  font-size: 1.03rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ifm-font-color-base);
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.navbar__item .navbar__link:hover {
+  color: #1d4ed8;
+  text-decoration: none;
+  background: rgba(37, 99, 235, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.16);
+}
+.navbar__item--active .navbar__link {
+  font-weight: 700; /* only active is bold */
+  color: #1d4ed8;
+  background: rgba(37, 99, 235, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.2);
+}
+
+html[data-theme='dark'] .navbar__item .navbar__link:hover {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.2);
+}
+
+html[data-theme='dark'] .navbar__item--active .navbar__link {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.25);
+}
+
+/* Prevent dropdown labels from looking active on every page */
+.navbar__link--dropdown,
+.navbar__item--dropdown > .navbar__link,
+.navbar__item--dropdown.navbar__item--active > .navbar__link,
+.navbar__link--dropdown.navbar__link--active,
+.navbar .navbar__inner .navbar__item--dropdown.navbar__item--active > .navbar__link--dropdown {
+  font-weight: 600 !important;
+  color: var(--ifm-font-color-base) !important;
+}
+
+/* Dropdown styling */
+.dropdown__menu {
+  border: 1px solid var(--ss-border-soft);
+  border-radius: 12px;
+  box-shadow: var(--ss-shadow-md);
+  padding: 0.35rem;
+  z-index: 6000; /* ensure above navbar blur */
+}
+.dropdown__link {
+  border-radius: 10px;
+  font-weight: 600;
+}
+.dropdown__link:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+/* -------------------------
+   Right-side icon buttons (search/moon/fullscreen)
+   Use these by adding className in CustomNavbar
+-------------------------- */
+.ssNavbarRight {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-left: auto;
+  padding-right: 0.9rem;
+  transform: translateY(1px); /* push slightly down */
+}
+
+/* Shared icon button shape */
+.ssIconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+/* Make icons slightly smaller */
+.ssIconButton svg,
+.ssIconButton span {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.ssIconButton:hover {
+  background: rgba(15, 23, 42, 0.04);
+  border-color: var(--ss-border-soft);
+}
+
+html[data-theme='dark'] .ssIconButton:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* -------------------------
+   Search dropdown visibility fix
+   (your dropdown was appearing behind blur/content)
+-------------------------- */
+
+/* Make sure the search wrapper creates a stacking context */
+.ssSearchRoot {
+  position: relative;
+  z-index: 7000; /* above navbar */
+}
+
+/* Force dropdown above everything */
+.ssSearchDropdown {
+  position: absolute;
+  top: calc(100% + 32px);
+  right: 0;
+
+  width: 340px;
+  max-width: min(85vw, 360px);
+
+  background: var(--ss-surface);
+  border: 1px solid var(--ss-border-soft);
+  border-radius: 14px;
+  box-shadow: var(--ss-shadow-md);
+
+  padding: 12px;
+  z-index: 9999; /* the big fix */
+}
+
+html[data-theme='dark'] .ssSearchDropdown {
+  background: rgba(11, 18, 32, 0.98);
+  border: 1px solid var(--ss-border-soft);
+}
+
+/* Search input */
+.ssSearchInput {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--ss-border-soft);
+  outline: none;
+  font-size: 0.95rem;
+  background: transparent;
+  color: var(--ifm-font-color-base);
+}
+.ssSearchInput:focus {
+  border-color: rgba(37, 99, 235, 0.55);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Results */
+.ssSearchResults {
+  margin-top: 10px;
+  max-height: 260px;
+  overflow: auto;
+  border-top: 1px solid var(--ss-border-soft);
+  padding-top: 10px;
+}
+
+.ssSearchResultItem {
+  padding: 8px 8px;
+  border-radius: 10px;
+}
+.ssSearchResultItem:hover {
+  background: rgba(37, 99, 235, 0.06);
+}
+.ssSearchResultLink {
+  display: block;
+  font-weight: 750;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+.ssSearchResultSnippet {
+  margin: 4px 0 0;
+  color: var(--ss-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+/* -------------------------
+   Code blocks
+-------------------------- */
+code {
+  font-family: var(--ss-font-mono);
+  padding: 0.14em 0.32em;
+  border-radius: 8px;
+  background: rgba(2, 6, 23, 0.06);
+}
+
+html[data-theme='dark'] code {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+pre {
+  border-radius: 14px;
+  border: 1px solid var(--ss-border-soft);
+  box-shadow: var(--ss-shadow-sm);
+  overflow: auto;
+}
+
+/* -------------------------
+   Tables
+-------------------------- */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--ss-border-soft);
+  box-shadow: var(--ss-shadow-sm);
+  background: var(--ss-surface);
+}
+
+thead th {
+  background: rgba(2, 6, 23, 0.04);
+  font-weight: 800;
+  text-align: left;
+  padding: 0.75rem 0.85rem;
+}
+
+tbody td {
+  padding: 0.75rem 0.85rem;
+  border-top: 1px solid var(--ss-border-soft);
+}
+
+html[data-theme='dark'] thead th {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* -------------------------
+   Tabs (Docusaurus)
+-------------------------- */
+.tabs__list {
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--ss-border-soft);
+  padding-bottom: 0.5rem;
+}
+
+.tabs__item {
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.tabs__item--active {
+  background: rgba(37, 99, 235, 0.10);
+  border-color: rgba(37, 99, 235, 0.25);
+  color: rgba(37, 99, 235, 0.95);
+}
+
+html[data-theme='dark'] .tabs__item--active {
+  background: rgba(253, 234, 30, 0.10);
+  border-color: rgba(253, 234, 30, 0.25);
+  color: rgba(253, 234, 30, 0.95);
+}
+
+/* -------------------------
+   Sidebar polish
+-------------------------- */
+.menu__link {
+  border-radius: 10px;
+  font-weight: 600;
+}
+.menu__link:hover {
+  background: rgba(37, 99, 235, 0.06);
+}
+.menu__link--active {
+  background: rgba(37, 99, 235, 0.10);
+  color: rgba(37, 99, 235, 0.95);
+}
+
+/* -------------------------
+   Responsive tweaks
+-------------------------- */
+@media (max-width: 996px) {
+  .navbar {
+    height: 64px;
+  }
+  .navbar__item .navbar__link {
+    font-size: 1rem;
+  }
+  .ssIconButton {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 768px) {
+  html { font-size: 16px; }
 }

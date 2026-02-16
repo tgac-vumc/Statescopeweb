@@ -1,11 +1,11 @@
 /* Base styles for the footer */
 .footer {
-  background-color: var(--ifm-background-color); /* Use the theme background color */
-  border-top: 1px solid #000 !important; /* Black top border */
-  padding: 1rem; /* Ample padding for better spacing */
-  color: var(--ifm-font-color-base); /* Use the theme's base font color */
-  font-size: 0.875rem; /* Appropriately sized text for footer */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions for theme changes */
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.96), rgba(241, 245, 249, 0.92));
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 1.4rem 0;
+  color: #0f172a;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Container for layout */
@@ -13,41 +13,100 @@
   display: flex;
   justify-content: space-between; /* Space items out between the sides */
   align-items: center; /* Align items vertically in the middle */
-  padding: 0 20px; /* Horizontal padding for better alignment */
+  padding: 0 28px;
+  gap: 1.5rem;
 }
 
 .footerLeft, .footerRight {
-  color: inherit; /* Inherit color from the footer for consistency */
+  color: inherit;
+}
+
+.footerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footerBrand {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.footerAffiliation {
+  font-size: 0.85rem;
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.footerRight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: right;
+}
+
+.footerMeta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  color: rgba(15, 23, 42, 0.7);
+  font-size: 0.85rem;
+}
+
+.footerDivider {
+  opacity: 0.6;
 }
 
 /* Dark mode specific styles */
 [data-theme='dark'] .footer {
-  background-color: #1a1a1a; /* Darker background for dark mode */
-  color: #ccc; /* Lighter text color for readability in dark mode */
-  border-top-color: rgba(255, 255, 255, 0.2); /* Lighter border in dark mode */
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.9));
+  color: #e2e8f0;
+  border-top-color: rgba(148, 163, 184, 0.2);
 }
 
 /* Styling for links in the footer for better visibility and interaction */
 .footer a {
-  color: var(--ifm-color-primary); /* Primary color for links */
-  text-decoration: none; /* No underline */
-  transition: color 0.3s ease; /* Smooth color transition */
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .footer a:hover {
-  color: var(--ifm-color-primary-dark); /* Darker shade when hovered */
-  text-decoration: underline; /* Underline on hover for better interaction feedback */
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+[data-theme='dark'] .footerAffiliation,
+[data-theme='dark'] .footerMeta {
+  color: rgba(226, 232, 240, 0.7);
+}
+
+[data-theme='dark'] .footer a {
+  color: #38bdf8;
+}
+
+[data-theme='dark'] .footer a:hover {
+  color: #0ea5e9;
 }
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   .footerRow {
       flex-direction: column; /* Stack vertically on small screens */
-      align-items: flex-start; /* Align to start */
+      align-items: flex-start;
   }
 
   .footerLeft, .footerRight {
-      margin-bottom: 0.5rem; /* Add some margin bottom for spacing */
-      width: 100%; /* Full width to use all available space */
+      margin-bottom: 0.6rem;
+      width: 100%;
+  }
+
+  .footerRight {
+      text-align: left;
+  }
+
+  .footerMeta {
+      justify-content: flex-start;
   }
 }

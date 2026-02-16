@@ -5,22 +5,27 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerRow}>
-        {/* Left side text */}
-        <span className={styles.footerLeft}>
-          Tumour Genome Analysis Core, Amsterdam UMC
-        </span>
+        <div className={styles.footerLeft}>
+          <div className={styles.footerBrand}>Tumour Genome Analysis Core</div>
+          <div className={styles.footerAffiliation}>Amsterdam UMC</div>
+        </div>
 
-        {/* Right side text with a link */}
-        <span className={styles.footerRight}>
-          Site built with{' '}
-          <a
-            href="https://docusaurus.io"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Docusaurus 3.6.1
-          </a>
-        </span>
+        <div className={styles.footerRight}>
+          <div className={styles.footerMeta}>
+            <span>Statescope</span>
+          </div>
+          <div className={styles.footerMeta}>
+            <span>Built with</span>
+            <a
+              href="https://docusaurus.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerLink}
+            >
+              Docusaurus 3.6.1
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );

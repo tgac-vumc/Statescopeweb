@@ -13,10 +13,18 @@
     display: block !important;
     background-color: var(--docusaurus-collapse-button-bg);
     height: 40px;
-    position: sticky;
+    position: fixed;
     bottom: 0;
+    left: 0;
+    width: var(--doc-sidebar-width);
     border-radius: 0;
     border: 1px solid var(--ifm-toc-border-color);
+    z-index: 7000;
+  }
+
+  [dir='rtl'] .collapseSidebarButton {
+    left: auto;
+    right: 0;
   }
 
   .collapseSidebarButtonIcon {

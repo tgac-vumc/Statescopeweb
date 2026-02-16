@@ -1,12 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './index.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import sidebars from '@site/sidebars';
 
 export default function Home() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const sidebarItems = sidebars?.tutorialSidebar ?? [];
+
+  const renderSidebarItems = (items) => (
+    <ul className={styles.sidebarList}>
+      {items.map((item, index) => {
+        if (item.type === 'category') {
+          return (
+            <li key={`${item.label}-${index}`} className={styles.sidebarCategory}>
+              <div className={styles.sidebarCategoryLabel}>{item.label}</div>
+              {renderSidebarItems(item.items)}
+            </li>
+          );
+        }
+
+        if (item.type === 'doc') {
+          const label = item.label || item.id;
+          return (
+            <li key={`${item.id}-${index}`}>
+              <a className={styles.sidebarLink} href={useBaseUrl(`docs/${item.id}`)}>
+                {label}
+              </a>
+            </li>
+          );
+        }
+
+        return null;
+      })}
+    </ul>
+  );
+
   return (
     <Layout title="Statescope" description="Bayesian Log Normal Deconvolution">
       <main className={styles.mainContainer} style={{ position: 'relative' }}>
@@ -30,12 +62,32 @@ export default function Home() {
             position: 'absolute',
             inset: 0,
             backgroundColor: 'rgba(255, 255, 255, 0.92)',
-            backdropFilter: 'blur(6px)',
             zIndex: 1,
           }}
         />
 
         {/* ================= PAGE CONTENT ================= */}
+        <button
+          type="button"
+          className={`${styles.sidebarHandle} ${isSidebarOpen ? styles.sidebarHandleOpen : ''}`}
+          onClick={() => setIsSidebarOpen((prev) => !prev)}
+          aria-label={isSidebarOpen ? 'Close documentation sidebar' : 'Open documentation sidebar'}
+          aria-expanded={isSidebarOpen}
+        >
+          <span className={styles.sidebarHandleLabel}>DOCS</span>
+          <span className={styles.sidebarHandleChevron}>{'>'}</span>
+        </button>
+        <div
+          className={`${styles.sidebarBackdrop} ${isSidebarOpen ? styles.sidebarBackdropOpen : ''}`}
+          onClick={() => setIsSidebarOpen(false)}
+          aria-hidden="true"
+        />
+        <aside
+          className={`${styles.sidebarDrawer} ${isSidebarOpen ? styles.sidebarDrawerOpen : ''}`}
+          aria-hidden={!isSidebarOpen}
+        >
+          {renderSidebarItems(sidebarItems)}
+        </aside>
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
 
           {/* HERO BANNER */}
@@ -55,7 +107,7 @@ export default function Home() {
             <div className={styles.heroRight}>
               <div className={styles.logoContainer}>
                 <img
-                  src={useBaseUrl('img/New_logo.png')}
+                  src={useBaseUrl('img/new_logo_nobg.png')}
                   alt="Statescope Logo"
                   className={styles.logoImage}
                 />
