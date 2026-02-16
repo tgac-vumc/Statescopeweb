@@ -10,19 +10,29 @@
     "content": "About Statescope\nStatescope is a comprehensive computational framework for dissecting bulk gene expression data by integrating high-resolution single-cell information. It employs a multi-step pipeline"
   },
   {
+    "title": "Advanced Tutorial on Python",
+    "url": "/Statescopeweb/docs/advanced-tutorial_python",
+    "content": "Introduction\nIn this tutorial, we will demonstrate the functionality of the Statescope framework for advanced users:\n\nCreate a custom signature from scRNAseq data\nUse prior expectations for tumor cell"
+  },
+  {
     "title": "Statescope API Reference",
     "url": "/Statescopeweb/docs/api-reference",
     "content": "1 · Construction helpers\nInitialize_Statescope\nInitialise a Statescope model — always your first call.\n\n\n\nParameter\nType\nDefault\nDescription\n\n\n\nBulk\npd.DataFrame\nrequired\nLinear counts, library-size c"
   },
   {
+    "title": "Development Branch",
+    "url": "/Statescopeweb/docs/development",
+    "content": "\nStatescopePro (Dev) — Overview\nStatescopePro is the next-generation (development) implementation of Statescope: a memory- and time-efficient PyTorch-based rewrite designed for faster, more scalable d"
+  },
+  {
     "title": "Input Arguments",
     "url": "/Statescopeweb/docs/input",
-    "content": "Input Arguments\nThis page outlines the required inputs and optional parameters for running Statescope.\nRequired Datasets\nSignature Matrices\nThe signature matrix defines the gene expression profiles of"
+    "content": "Input Arguments\nThis page outlines the required inputs and optional parameters for running Statescope.\n\nRequired Datasets\nSignature Matrices\nThe signature matrix defines the gene expression profiles o"
   },
   {
     "title": "Installation Guide",
     "url": "/Statescopeweb/docs/installation",
-    "content": "Hardware Requirements\nStatescope can operate on a variety of systems depending on the data size:\n\nSmall-scale data: Suitable for Binder (1 CPU, 2GB RAM on Google Cloud).\nLarge-scale data: Performance "
+    "content": "Hardware Requirements\nStatescope is designed to scale from lightweight demo usage to large cohort-level Bayesian analyses.\nPerformance depends strongly on sample size, parallelization strategy, and GP"
   },
   {
     "title": "Tutorial Intro",
@@ -40,9 +50,14 @@
     "content": "Statescope Tutorial\nIn this tutorial, we will walk through setting up and running the Statescope package in Python for bulk data analysis. We will cover installation, environment setup, data import, d"
   },
   {
-    "title": "r",
+    "title": "R tutorial for Statescope",
     "url": "/Statescopeweb/docs/r",
-    "content": "No content available"
+    "content": "StatescopeR Tutorial (Quickstart)\nStatescopeR is an R wrapper around Statescope, a framework for:\n\nOfficial package page (start here)\nhttps://bioc.r-universe.dev/StatescopeR\n\nThat page contains:\n\npack"
+  },
+  {
+    "title": "Release Notes",
+    "url": "/Statescopeweb/docs/release-notes",
+    "content": "This page documents user-facing releases of Statescope, including new features, algorithmic improvements, and important bug fixes.  For full commit history, see the GitHub repository.\n\nv1.0.7LATEST — "
   },
   {
     "title": "troubleshooting",
