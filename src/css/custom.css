@@ -227,10 +227,36 @@ html[data-theme='dark'] .ssNavbarShell {
   z-index: 1;
 }
 
+/* Overlay logo under the title */
+.navbar__brand {
+  position: relative;
+}
+
+.navbar__logo {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-80%) rotate(-15deg) scale(1.22);
+  z-index: 0;
+  margin-right: 0;
+}
+
+.navbar__logo img {
+  height: 60px;
+  width: 112px;
+  object-fit: cover;
+}
+
+.navbar__title {
+  position: relative;
+  z-index: 1;
+  padding-left: 14px;
+}
+
 /* Logo and title */
 .navbar__title {
   font-weight: 850;
-  font-size: 1.45rem;
+  font-size: 1.52rem;
   letter-spacing: -0.02em;
 }
 

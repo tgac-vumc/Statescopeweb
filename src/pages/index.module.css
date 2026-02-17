@@ -219,7 +219,7 @@ html[data-theme='dark'] .logoImage {
   display: flex !important;
   justify-content: center !important;
   gap: 2rem !important;
-  margin-top: 2vw !important;
+  margin-top: 1.4rem !important;
   margin-bottom: 1.5vw !important;
   flex-wrap: wrap !important;
   background-color: transparent !important;
@@ -313,6 +313,8 @@ html[data-theme='dark'] .githubButton .iconWrapper {
 .imageContainer {
   text-align: center !important;
   line-height: 0 !important;
+  width: min(96vw, 1200px);
+  margin: 0 auto;
 }
 
 /* Default image */
@@ -320,6 +322,7 @@ html[data-theme='dark'] .githubButton .iconWrapper {
   display: block !important;
   width: 100%;
   height: auto;
+  margin: 0 auto;
 }
 
 /* Dark mode: dim images slightly for contrast */
@@ -500,6 +503,22 @@ html[data-theme='dark'] .featureCard p {
   line-height: 1.6 !important;
 }
 
+@media (max-width: 900px) {
+  .featuresSection {
+    max-width: none;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .heroBox {
+    padding: 2rem 1.8rem;
+  }
+
+  .buttonContainer {
+    gap: 1rem !important;
+  }
+}
+
 
 /* push announcements box to a fixed location inside the page (not the viewport sidebar) */
 .heroLowerGrid {
@@ -507,21 +526,18 @@ html[data-theme='dark'] .featureCard p {
 }
 /* fixed to top-left of viewport (front page) */
 
-/* Fixed to top-left of the PAGE (viewport) */
 .announcementBox {
   position: absolute;
-
-  top: 4rem;
+  top: 1.5rem;
   right: 1.7rem;
-
   z-index: 10000;
 
   background-color: #f2f2f2;
   color: #111;
 
   padding: 1rem 1.25rem;
-  width: 320px;
-  max-width: 35vw;
+  width: clamp(220px, 26vw, 320px);
+  max-width: 32vw;
 
   border-radius: 10px;
   border: 1px solid rgba(0,0,0,0.08);
@@ -529,6 +545,32 @@ html[data-theme='dark'] .featureCard p {
 
   font-size: 0.95rem;
   line-height: 1.45;
+}
+
+@media (max-width: 1400px) {
+  .announcementBox {
+    width: clamp(200px, 24vw, 280px);
+    max-width: 28vw;
+    padding: 0.75rem 0.9rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .announcementBox {
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+    width: clamp(200px, 28vw, 280px);
+  }
+}
+
+@media (max-width: 980px) {
+  .announcementBox {
+    position: static;
+    width: 100%;
+    max-width: none;
+    margin: 1rem 0;
+  }
 }
 
 html[data-theme='dark'] .announcementBox {
@@ -566,5 +608,58 @@ html[data-theme='dark'] .announcementBox {
     margin: 0.75rem 0;
     left: auto;
     top: auto;
+  }
+
+  .mainContainer {
+    padding: 1rem 4vw 2.5vw !important;
+  }
+
+  .featuresSection {
+    grid-template-columns: 1fr;
+    margin: 1.5rem 0 !important;
+  }
+
+  .featureCard {
+    padding: 1.2rem;
+  }
+
+  .heroBox {
+    margin: 0.75rem auto 1rem !important;
+    padding: 1.8rem 1.4rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(1.8rem, 7vw, 2.6rem);
+  }
+
+  .heroSubtitle {
+    width: 100%;
+    max-width: none;
+    font-size: 1rem;
+  }
+
+  .imageContainer {
+    width: min(94vw, 960px);
+  }
+
+  .imageContainer img {
+    max-height: 50vh;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 560px) {
+  .buttonContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem !important;
+  }
+
+  .button,
+  .downloadButton,
+  .githubButton,
+  .backButton {
+    width: 100%;
+    max-width: 320px;
   }
 }

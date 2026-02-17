@@ -7,7 +7,7 @@ This page documents **user-facing releases** of **Statescope**, including new fe
 
 ---
 
-## <span class="release-version latest">v1.0.7</span><span class="release-tag">LATEST</span> — February 2026
+## <span class="release-version latest">v1.0.7</span> — February 2026
 
 **Current stable installation version (PyPI)**
 

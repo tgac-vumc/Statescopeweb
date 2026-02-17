@@ -48,10 +48,13 @@ export default function Home() {
           <h3>📣 Announcements</h3>
           <ul>
             <li>
+              <strong>v1.0.7 released</strong> — improved install reliability for modern Python environments (pip ≥ 24.1)
+            </li>
+            <li>
               <strong>StatescopePro on development branch</strong> — Faster Deconvolution scaled for large cohorts with advanced features. Find it on branch <code>StatescopePro</code> on tgac-vumc/Statescope on GitHub.
             </li>
             <li>
-              <strong>v1.0.5 released</strong> — improved GPU ↔ CPU portability
+              <strong>v1.0.6 released</strong> — improved CPU ↔ GPU interoperability for saved models and execution
             </li>
           </ul>
         </div>
@@ -105,14 +108,6 @@ export default function Home() {
           {/* LOGO + CTA */}
           <div className={styles.heroLowerGrid}>
             <div className={styles.heroRight}>
-              <div className={styles.logoContainer}>
-                <img
-                  src={useBaseUrl('img/new_logo_nobg.png')}
-                  alt="Statescope Logo"
-                  className={styles.logoImage}
-                />
-              </div>
-
               <div className={styles.buttonContainer}>
                 <a
                   href={useBaseUrl('docs/installation')}

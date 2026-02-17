@@ -49,8 +49,8 @@ const config = {
     navbar: {
       logo: {
         alt: 'Statescope',
-        src: 'img/logo_final_small.png',
-        style: { height: '36px' },
+        src: 'img/logo_better.png',
+        style: { height: '44px' },
       },
 
       title: 'Statescope',
