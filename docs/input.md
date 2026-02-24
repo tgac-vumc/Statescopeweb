@@ -88,8 +88,41 @@ expected_fractions = pd.read_csv("expected_cell_fractions.csv", index_col=0)
 
 ---
 
+## **Signature Preprocessing (h5ad)**
+
+Your input `.h5ad` should be **CP10K-normalized** and **log1p-transformed** before initializing Statescope.
+
+**Example:**
+
+```python
+import scanpy as sc
+
+adata = sc.read_h5ad("signature.h5ad")
+sc.pp.normalize_total(adata, target_sum=1e4)  # CP10K
+sc.pp.log1p(adata)
+```
+
+---
+
+## **Saving Your Statescope Model**
+
+It is highly recommended to initialize Statescope on **CPU**, then save the model so it can be reopened later on CPU or GPU.
+
+```python
+Statescope_model = Initialize_Statescope(
+    Bulk,
+    Signature=Signature,
+    celltype_key='leiden',
+    Ncores=40,
+)
+
+# Save the model for reuse (set to_cpu=True for CPU portability)
+Statescope_model.save("Statescope_model.pkl", to_cpu=True)
+```
+
+---
+
 ## **🔗 Further Resources**
 - **[Processed Signatures](processed-signatures.md)**
 - **[Python Tutorial](python.md)**
 - **[GitHub Repository](https://github.com/tgac-vumc/Statescopeweb.git)**
-

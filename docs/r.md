@@ -9,18 +9,9 @@ StatescopeR is an R wrapper around **Statescope**, a framework for:
 
 --------
 
-## Official package page (start here)
+## Official R package page 
 
-```text
-https://bioc.r-universe.dev/StatescopeR
-```
-
-That page contains:
-
-* package downloads
-* reference manual (HTML/PDF)
-* installation snippet
-* build logs (useful if vignettes fail to build)
+(StatescopeR Bioconductor)(https://doi.org/doi:10.18129/B9.bioc.StatescopeR)
 
 ---
 
@@ -54,4 +45,3 @@ install.packages(
 library(StatescopeR)
 packageVersion("StatescopeR")
 ```
-

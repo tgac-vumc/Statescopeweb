@@ -22,16 +22,21 @@ const sidebars = {
       type: 'category',
       label: 'Tutorials',
       items: [
-        {
-          type: 'doc',
-          id: 'python',
-          label: 'Basic Tutorial Python',
-        },
+    {
+      type: 'doc',
+      id: 'python',
+      label: 'Basic Tutorial Python',
+    },
         {
           type: 'doc',
           id: 'advanced-tutorial_python',
           label: 'Advanced Tutorial Python',
         },
+    {
+      type: 'doc',
+      id: 'visualisation-functions-python',
+      label: 'Visualisation Functions (Python)',
+    },
         
 
         {

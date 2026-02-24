@@ -186,3 +186,31 @@ By following these steps, you will:
 
 Feel free to adjust the code to fit your data structure, directory organization, or specific analysis needs. For more advanced usage, please consult the official Statescope documentation or check additional examples in the repository.
 
+---
+
+## 10. Saving, Loading, and CPU/GPU Interoperability
+
+Statescope models are not fully portable when using `pickle.load`. Use the built-in `Statescope.load()` and `model.save()` helpers for CPU/GPU interoperability.
+
+**Example:**
+
+```python
+model = Statescope.load(
+    "/net/beegfs/users/P094398/StatescopeBenchmark/Benchmark/Data/Alldone.pkl",
+    device="cpu",
+)
+
+model.StateDiscovery()
+model.EcotypeDiscovery()
+
+# Save the model; if you ran on GPU, you can save it for CPU use like this
+model.save(
+    "/net/beegfs/users/P094398/Deployed_Dec/tutorial/Output/AllFinal_PBMC5.pkl",
+    to_cpu=True,
+)
+```
+
+**Notes:**
+
+- Use `device="cpu"` when opening on CPU, and `device="cuda"` when opening on GPU.
+- It is recommended to save your model after each module (e.g., after deconvolution, refinement, and state discovery).

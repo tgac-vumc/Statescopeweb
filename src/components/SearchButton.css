@@ -1,7 +1,7 @@
 /* Root wrapper: gives us a stacking context */
 .ssSearchRoot {
   position: relative;
-  z-index: 9000; /* must be above navbar blur layer */
+  z-index: 30000; /* must be above navbar blur layer */
 }
 
 /* Optional: tweak emoji alignment */
@@ -19,14 +19,16 @@
   width: 340px;
   max-width: min(92vw, 420px);
 
-  background: var(--ifm-background-color);
+  background: #ffffff !important;
+  opacity: 1 !important;
+  backdrop-filter: none;
   border: 1px solid rgba(15, 23, 42, 0.12);
   border-radius: 14px;
 
   box-shadow: 0 18px 48px rgba(15, 23, 42, 0.18);
   padding: 12px;
 
-  z-index: 12000; /* above navbar */
+  z-index: 30000; /* above navbar */
 }
 
 /* If any ancestor stacking context still traps it, uncomment this:
@@ -89,6 +91,8 @@
 
 /* Dark mode tweaks */
 html[data-theme='dark'] .ssSearchDropdown {
+  background: #0f172a !important;
+  opacity: 1 !important;
   border-color: rgba(255, 255, 255, 0.14);
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
 }

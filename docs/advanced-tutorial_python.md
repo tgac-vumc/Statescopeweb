@@ -300,3 +300,32 @@ for i in range(len(StateScores_scRNAseq.columns)):
 Here we observe an enrichment of State 3 scores in the classical cells and an enrichment of State 2 scores in the basal cells.
 
 Taken together, Statescope identified Epithelial state 2 as Basal and Epithelial state 3 as Classical.
+
+---
+
+## Saving, Loading, and CPU/GPU Interoperability
+
+Statescope models are not fully portable when using `pickle.load`. Use the built-in `Statescope.load()` and `model.save()` helpers for CPU/GPU interoperability.
+
+**Example:**
+
+```python
+model = Statescope.load(
+    "/net/beegfs/users/P094398/StatescopeBenchmark/Benchmark/Data/Alldone.pkl",
+    device="cpu",
+)
+
+model.StateDiscovery()
+model.EcotypeDiscovery()
+
+# Save the model; if you ran on GPU, you can save it for CPU use like this
+model.save(
+    "/net/beegfs/users/P094398/Deployed_Dec/tutorial/Output/AllFinal_PBMC5.pkl",
+    to_cpu=True,
+)
+```
+
+**Notes:**
+
+- Use `device="cpu"` when opening on CPU, and `device="cuda"` when opening on GPU.
+- It is recommended to save your model after each module (e.g., after deconvolution, refinement, and state discovery).
