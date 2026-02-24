@@ -10,8 +10,7 @@ StatescopeR is an R wrapper around **Statescope**, a framework for:
 --------
 
 ## Official R package page 
-
-(StatescopeR Bioconductor)(https://doi.org/doi:10.18129/B9.bioc.StatescopeR)
+[StatescopeR Bioconductor](https://doi.org/10.18129/B9.bioc.StatescopeR) 📌
 
 ---
 
