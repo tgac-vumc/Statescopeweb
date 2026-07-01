@@ -307,17 +307,10 @@ html[data-theme='dark'] .navbar__title::after {
 }
 
 /* The rotated/oversized logo treatment above is tuned for the roomy
-   desktop bar. Reset it inside the mobile drawer's brand row, which is
-   ~249px wide, or the logo and version pill collide with the title. */
+   desktop bar. In the narrow drawer header it just looks messy, so drop
+   it and keep a clean "Statescope" wordmark + close button. */
 .navbar-sidebar__brand .navbar__logo {
-  position: static;
-  transform: none;
-  margin-right: 0.5rem;
-}
-
-.navbar-sidebar__brand .navbar__logo img {
-  height: 32px;
-  width: 32px;
+  display: none;
 }
 
 .navbar-sidebar__brand .navbar__title {
