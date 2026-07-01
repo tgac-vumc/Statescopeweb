@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(npx playwright *)",
+      "Bash(sed -i '' 's#/docs/intro#/docs/about#' mobile-test.js)",
+      "Bash(node mobile-test.js)"
+    ]
+  }
+}

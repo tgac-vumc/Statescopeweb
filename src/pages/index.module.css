@@ -639,7 +639,9 @@ html[data-theme='dark'] .announcementBox {
   }
 
   .imageContainer {
-    width: min(94vw, 960px);
+    /* Fill the parent content box rather than a vw value: 94vw is wider
+       than the padded .container on phones and spills past the edge. */
+    width: 100%;
   }
 
   .imageContainer img {

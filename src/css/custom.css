@@ -98,6 +98,18 @@ body {
   background: var(--ss-page-bg);
 }
 
+/* Docusaurus hides the skip-to-content link at left:100%, which pushes
+   the page scroll width past the viewport on phones (horizontal jiggle).
+   Park it off the left edge instead; still revealed on keyboard focus. */
+a[class*='skipToContent'] {
+  left: auto !important;
+  right: 100% !important;
+}
+a[class*='skipToContent']:focus {
+  left: 1rem !important;
+  right: auto !important;
+}
+
 /* -------------------------
    Markdown spacing (fix “cramped”)
 -------------------------- */
@@ -195,10 +207,22 @@ body {
   background-size: 16px 16px, 100% 100%;
   border-bottom: 1px solid rgba(37, 99, 235, 0.12);
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-  backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 20000;
+}
+
+/* Blur lives on a pseudo-element rather than the shell itself: a
+   filter/backdrop-filter on the shell would turn it into a containing
+   block for its position:fixed descendants (the mobile nav drawer),
+   trapping the drawer inside the 68px-tall navbar instead of the viewport. */
+.ssNavbarShell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(12px);
+  pointer-events: none;
+  z-index: -1;
 }
 
 html[data-theme='dark'] .ssNavbarShell {
@@ -280,6 +304,38 @@ to chnage version on website logo*/
 html[data-theme='dark'] .navbar__title::after {
   background: rgba(253, 234, 30, 0.12);
   color: rgba(253, 234, 30, 0.95);
+}
+
+/* The rotated/oversized logo treatment above is tuned for the roomy
+   desktop bar. Reset it inside the mobile drawer's brand row, which is
+   ~249px wide, or the logo and version pill collide with the title. */
+.navbar-sidebar__brand .navbar__logo {
+  position: static;
+  transform: none;
+  margin-right: 0.5rem;
+}
+
+.navbar-sidebar__brand .navbar__logo img {
+  height: 32px;
+  width: 32px;
+}
+
+.navbar-sidebar__brand .navbar__title {
+  padding-left: 0;
+  font-size: 1.15rem;
+}
+
+.navbar-sidebar__brand .navbar__title::after {
+  display: none;
+}
+
+/* When the mobile drawer is open, the primary bar (brand + right-side
+   icons) still sits underneath it at the same screen position, causing
+   a double-exposure with the drawer's own brand row. Hide it while open. */
+.ssNavbarShell:has(.navbar-sidebar--show) .navbar__inner .navbar__brand,
+.ssNavbarShell:has(.navbar-sidebar--show) .navbar__toggle,
+.ssNavbarShell:has(.navbar-sidebar--show) .ssNavbarRight {
+  visibility: hidden;
 }
 
 /* Navbar links (fix random bold “Articles”) */
@@ -565,19 +621,98 @@ html[data-theme='dark'] .tabs__item--active {
 /* -------------------------
    Responsive tweaks
 -------------------------- */
+
+/* ===== Tablet / mobile (hamburger appears at 996px) ===== */
 @media (max-width: 996px) {
+  /* The global zoom:0.8 shrinks text to ~13px and shrinks tap targets
+     on phones. Render at true device size on mobile for readability. */
+  html {
+    zoom: normal;
+    font-size: 16px;
+  }
+
+  :root {
+    --ss-navbar-height: 56px;
+  }
+
   .navbar {
-    height: 64px;
+    height: 56px;
   }
-  .navbar__item .navbar__link {
-    font-size: 1rem;
+
+  /* Keep the decorative logo framing the wordmark (same look as desktop),
+     just scaled down a touch so it fits the shorter bar and clears the
+     hamburger on its left. */
+  .navbar__logo {
+    left: 16px;
+    transform: translateY(-80%) rotate(-18deg) scale(1.25);
   }
+  .navbar__logo img {
+    height: 72px;
+    width: 63px;
+  }
+  .navbar__title {
+    padding-left: 46px;
+    font-size: 1.2rem;
+  }
+  /* Hide the version pill on mobile — it crowds the bar */
+  .navbar__title::after {
+    display: none;
+  }
+
+  /* Keep the brand from stretching and pushing the icons off-screen */
+  .navbar__brand {
+    max-width: 66vw;
+    overflow: hidden;
+  }
+
+  .ssNavbarRight {
+    gap: 0.15rem;
+    padding-right: 0.4rem;
+  }
+
   .ssIconButton {
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 40px;
   }
 }
 
-@media (max-width: 768px) {
-  html { font-size: 16px; }
+/* ===== Phones ===== */
+@media (max-width: 600px) {
+  .navbar__title {
+    font-size: 1.1rem;
+  }
+
+  /* Anchor the search dropdown to the viewport, full-width, so it never
+     spills off the right edge or hides behind content on a narrow screen. */
+  .ssSearchDropdown {
+    position: fixed;
+    top: calc(var(--ss-navbar-height) + 8px);
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* ===== Very narrow phones (≤360px) ===== */
+@media (max-width: 360px) {
+  /* Brand + three icons no longer fit. Drop the fullscreen toggle — the
+     least useful control on a phone (mobile browsers barely honor the
+     fullscreen API) — so the bar fits without horizontal scroll. */
+  .ssNavbarRight > .ssIconButton:last-of-type {
+    display: none;
+  }
+
+  .navbar__brand {
+    max-width: 55vw;
+  }
+
+  .navbar__title {
+    font-size: 1rem;
+  }
+
+  .ssIconButton {
+    width: 38px;
+    height: 38px;
+  }
 }
